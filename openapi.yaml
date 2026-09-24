@@ -15,7 +15,7 @@ info:
     name: Commercial
     url: https://dabradata.com/terms
   x-logo:
-    url: https://dabradata.com/logo.svg
+    url: https://dabradata.com/logo-dabra.svg
 
 externalDocs:
   description: Full API documentation
