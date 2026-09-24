@@ -18,7 +18,7 @@ comando ou codigo aqui
 
 **Mensagem de erro**
 ```
-cole o erro aqui
+cole o erro aqui (sem a sua chave de API)
 ```
 
 **Ambiente**
