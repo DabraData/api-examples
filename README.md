@@ -1,21 +1,21 @@
-# FonteData — API Examples
+# Dabra — API Examples
 
 [![Sync](https://github.com/FonteData/fontedata-portal/actions/workflows/sync-api-examples.yml/badge.svg)](https://github.com/FonteData/fontedata-portal/actions/workflows/sync-api-examples.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![108+ endpoints](https://img.shields.io/badge/endpoints-108%2B-blue)](https://fontedata.com/docs)
-[![Docs](https://img.shields.io/badge/docs-fontedata.com-teal)](https://fontedata.com/docs)
+[![108+ endpoints](https://img.shields.io/badge/endpoints-108%2B-blue)](https://dabradata.com/docs)
+[![Docs](https://img.shields.io/badge/docs-dabradata.com-teal)](https://dabradata.com/docs)
 
-> Exemplos praticos de integracao com a [FonteData API](https://fontedata.com) — a plataforma brasileira de inteligencia de dados com 108+ endpoints de CNPJ, CPF, KYC, compliance, processos judiciais e sancoes internacionais.
+> Exemplos praticos de integracao com a [API da Dabra](https://dabradata.com) — a plataforma brasileira de inteligencia de dados com 108+ endpoints de CNPJ, CPF, KYC, compliance, processos judiciais e sancoes internacionais.
 
 ## Quick Start
 
-1. **Crie sua conta** em [app.fontedata.com/signup](https://app.fontedata.com/signup) — gratuito, R$50 em creditos, sem cartao
+1. **Crie sua conta** em [app.dabradata.com/signup](https://app.dabradata.com/signup) — gratuito, R$50 em creditos, sem cartao
 2. **Copie sua API key** no painel
 3. **Substitua** `fd_live_SUA_CHAVE` nos exemplos pela sua chave
 
 ```bash
 curl -H "X-API-Key: fd_live_SUA_CHAVE" \
-  https://app.fontedata.com/api/v1/consulta/consulta-cnpj-receita/00000000000191
+  https://app.dabradata.com/api/v1/consulta/consulta-cnpj-receita/00000000000191
 ```
 
 ## Exemplos por linguagem
@@ -43,9 +43,9 @@ curl -H "X-API-Key: fd_live_SUA_CHAVE" \
 
 ## Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://fontedata.com/docs)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://dabradata.com/docs)
 
-Importe `FonteData.postman_collection.json` diretamente no Postman. Configure a variavel de ambiente `API_KEY` com sua chave.
+Importe `Dabra.postman_collection.json` diretamente no Postman. Configure a variavel de ambiente `API_KEY` com sua chave.
 
 ## Autenticacao
 
@@ -64,10 +64,10 @@ X-API-Key: fd_live_SUA_CHAVE
 
 ## Links
 
-- Documentacao completa: https://fontedata.com/docs
-- Precos: https://fontedata.com/pricing
+- Documentacao completa: https://dabradata.com/docs
+- Precos: https://dabradata.com/pricing
 - Suporte via WhatsApp: https://wa.me/5511991220174
-- Criar conta gratis: https://app.fontedata.com/signup
+- Criar conta gratis: https://app.dabradata.com/signup
 
 ## Contribuindo
 
@@ -75,4 +75,4 @@ Veja [CONTRIBUTING.md](./CONTRIBUTING.md). PRs com exemplos em novas linguagens 
 
 ---
 
-> Este repositorio e atualizado automaticamente quando a documentacao da FonteData e atualizada.
+> Este repositorio e atualizado automaticamente quando a documentacao da Dabra e atualizada.
