@@ -3,4 +3,4 @@ __pycache__/
 .env
 venv/
 node_modules/
-dossie_*.json
+due_diligence_*.json

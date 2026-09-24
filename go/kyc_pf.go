@@ -1,7 +1,8 @@
 package main
 
-// Dabra - KYC Pessoa Fisica em Go
-// Custo estimado: ~R$9,00 por pessoa
+// Dabra - KYC Pessoa Fisica em Go (stdlib)
+// Uso: go run kyc_pf.go 123.456.789-09
+// Custo de referencia: R$ 6,00 por pessoa (7 consultas, precos de tabela em 24/09/2026)
 // Docs: https://dabradata.com/docs
 
 import (
@@ -9,23 +10,29 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
-	"strings"
 	"sync"
 	"time"
 )
 
-const kycAPIKey  = "dabra_live_SUA_CHAVE"
 const kycBaseURL = "https://app.dabradata.com/api/v1/consulta"
 
+func kycAPIKey() string {
+	if k := os.Getenv("DABRA_API_KEY"); k != "" {
+		return k
+	}
+	return "dabra_test_SUA_CHAVE"
+}
+
 var kycChecks = map[string]string{
-	"identidade":   "receita-federal-pf",
-	"pep":          "pep-exposicao",
-	"ceis":         "ceis-sancoes",
-	"ofac":         "ofac-sancoes",
-	"antecedentes": "antecedentes-criminais",
-	"processos":    "processos-agrupada",
-	"mandados":     "cnj-mandados-prisao",
+	"identidade":         "receita-federal-pf",    // R$ 0,54
+	"pep":                "pep-exposicao",         // R$ 0,43
+	"listas_restritivas": "listas-restritivas",    // R$ 1,49 (17 listas, inclui OFAC/ONU/UE)
+	"ceis":               "ceis-sancoes",          // R$ 0,43
+	"antecedentes":       "antecedentes-federais", // R$ 0,60
+	"processos":          "processos-agrupada",    // R$ 1,65
+	"mandados":           "cnj-mandados-prisao",   // R$ 0,86
 }
 
 type CheckResult struct {
@@ -38,10 +45,10 @@ type CheckResult struct {
 
 func runCheck(name, endpoint, cpf string, wg *sync.WaitGroup, results chan<- CheckResult) {
 	defer wg.Done()
-	url := fmt.Sprintf("%s/%s/%s", kycBaseURL, endpoint, cpf)
-	client := &http.Client{Timeout: 30 * time.Second}
-	req, _ := http.NewRequest("GET", url, nil)
-	req.Header.Set("X-API-Key", kycAPIKey)
+	u := fmt.Sprintf("%s/%s?%s", kycBaseURL, endpoint, url.Values{"cpf": {cpf}}.Encode())
+	client := &http.Client{Timeout: 120 * time.Second}
+	req, _ := http.NewRequest("GET", u, nil)
+	req.Header.Set("X-API-Key", kycAPIKey())
 
 	resp, err := client.Do(req)
 	if err != nil {
@@ -56,7 +63,6 @@ func runCheck(name, endpoint, cpf string, wg *sync.WaitGroup, results chan<- Che
 }
 
 func kycPF(cpf string) map[string]CheckResult {
-	cpf = strings.NewReplacer(".", "", "-", "").Replace(cpf)
 	ch := make(chan CheckResult, len(kycChecks))
 	var wg sync.WaitGroup
 	for name, endpoint := range kycChecks {
@@ -69,7 +75,11 @@ func kycPF(cpf string) map[string]CheckResult {
 	out := map[string]CheckResult{}
 	for r := range ch {
 		icon := "OK"
-		if r.Status != 200 { icon = "FALHOU" }
+		if r.Err != nil {
+			icon = "erro"
+		} else if r.Status != 200 {
+			icon = fmt.Sprintf("HTTP %d", r.Status)
+		}
 		fmt.Printf("  [%s] %s: custo=R$%s\n", icon, r.Name, r.Cost)
 		out[r.Name] = r
 	}
@@ -77,10 +87,12 @@ func kycPF(cpf string) map[string]CheckResult {
 }
 
 func main() {
-	cpf := "12345678900"
-	if len(os.Args) > 1 { cpf = os.Args[1] }
+	cpf := "12345678909"
+	if len(os.Args) > 1 {
+		cpf = os.Args[1]
+	}
 	fmt.Printf("KYC PF para CPF %s:\n\n", cpf)
 	res := kycPF(cpf)
-	fmt.Printf("\n%d checks concluidos.\n", len(res))
+	fmt.Printf("\n%d consultas concluidas.\n", len(res))
 	_ = os.Stdout.Sync()
 }

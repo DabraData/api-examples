@@ -1,31 +1,41 @@
 package main
 
-// Dabra - Consultar CNPJ em Go
-// Docs: https://dabradata.com/docs
+// Dabra - Consultar CNPJ em Go (stdlib)
+// Uso: go run cnpj.go 00.000.000/0001-91
+// Docs: https://dabradata.com/docs/receita-federal/receita-federal-pj
+//
+// Chave: variavel de ambiente DABRA_API_KEY. Com a chave de teste (dabra_test_...)
+// a resposta e o exemplo do endpoint, a custo zero, com o header X-Example: true.
 
 import (
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
-	"strings"
 	"time"
 )
 
-const apiKey  = "dabra_live_SUA_CHAVE"
 const baseURL = "https://app.dabradata.com/api/v1/consulta"
 
-func consultarCNPJ(cnpj string) (map[string]interface{}, error) {
-	cnpj = strings.NewReplacer(".", "", "/", "", "-", "").Replace(cnpj)
-	url := fmt.Sprintf("%s/consulta-cnpj-receita/%s", baseURL, cnpj)
+func apiKey() string {
+	if k := os.Getenv("DABRA_API_KEY"); k != "" {
+		return k
+	}
+	return "dabra_test_SUA_CHAVE"
+}
 
-	client := &http.Client{Timeout: 30 * time.Second}
-	req, err := http.NewRequest("GET", url, nil)
+// Receita Federal PJ (R$ 0,43): cadastro, CNAE, endereco e QSA.
+func consultarCNPJ(cnpj string) (map[string]interface{}, error) {
+	endpoint := baseURL + "/receita-federal-pj?" + url.Values{"cnpj": {cnpj}}.Encode()
+
+	client := &http.Client{Timeout: 60 * time.Second}
+	req, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("X-API-Key", apiKey)
+	req.Header.Set("X-API-Key", apiKey())
 
 	resp, err := client.Do(req)
 	if err != nil {
@@ -33,14 +43,17 @@ func consultarCNPJ(cnpj string) (map[string]interface{}, error) {
 	}
 	defer resp.Body.Close()
 
-	fmt.Printf("Custo: R$ %s | Saldo: R$ %s\n",
-		resp.Header.Get("X-Request-Cost"),
-		resp.Header.Get("X-Balance-Remaining"))
-
 	body, _ := io.ReadAll(resp.Body)
 	if resp.StatusCode != 200 {
 		return nil, fmt.Errorf("HTTP %d: %s", resp.StatusCode, body)
 	}
+
+	if resp.Header.Get("X-Example") == "true" {
+		fmt.Println("(chave de teste: resposta de exemplo, sem custo)")
+	}
+	fmt.Printf("Custo: R$ %s | Saldo: R$ %s\n",
+		resp.Header.Get("X-Request-Cost"),
+		resp.Header.Get("X-Balance-Remaining"))
 
 	var result map[string]interface{}
 	if err := json.Unmarshal(body, &result); err != nil {
@@ -62,6 +75,6 @@ func main() {
 	}
 
 	fmt.Printf("Razao social: %v\n", dados["razao_social"])
-	fmt.Printf("Situacao:     %v\n", dados["situacao_cadastral"])
+	fmt.Printf("Situacao:     %v\n", dados["descricao_situacao_cadastral"])
 	fmt.Printf("CNAE:         %v\n", dados["cnae_fiscal_descricao"])
 }
