@@ -1,10 +1,10 @@
 <?php
-// FonteData - KYC Pessoa Fisica em PHP
+// Dabra - KYC Pessoa Fisica em PHP
 // Custo estimado: ~R$ 9,00 por pessoa
-// Docs: https://fontedata.com/docs
+// Docs: https://dabradata.com/docs
 
-$API_KEY = 'fd_live_SUA_CHAVE';
-$BASE_URL = 'https://app.fontedata.com/api/v1/consulta';
+$API_KEY = 'dabra_live_SUA_CHAVE';
+$BASE_URL = 'https://app.dabradata.com/api/v1/consulta';
 
 $CHECKS = [
     'identidade'   => 'receita-federal-pf',

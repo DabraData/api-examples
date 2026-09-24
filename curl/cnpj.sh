@@ -1,7 +1,7 @@
 #!/bin/bash
-# FonteData - Consultar CNPJ
-API_KEY="fd_live_SUA_CHAVE"
-BASE="https://app.fontedata.com/api/v1/consulta"
+# Dabra - Consultar CNPJ
+API_KEY="dabra_live_SUA_CHAVE"
+BASE="https://app.dabradata.com/api/v1/consulta"
 CNPJ=$(echo "${1:-00000000000191}" | tr -d './-')
 
 echo "=== CNPJ basico (Receita Federal) - R$ 0,16 ==="

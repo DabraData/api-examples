@@ -11,10 +11,10 @@
 
 1. **Crie sua conta** em [app.dabradata.com/signup](https://app.dabradata.com/signup) — gratuito, R$50 em creditos, sem cartao
 2. **Copie sua API key** no painel
-3. **Substitua** `fd_live_SUA_CHAVE` nos exemplos pela sua chave
+3. **Substitua** `dabra_live_SUA_CHAVE` nos exemplos pela sua chave
 
 ```bash
-curl -H "X-API-Key: fd_live_SUA_CHAVE" \
+curl -H "X-API-Key: dabra_live_SUA_CHAVE" \
   https://app.dabradata.com/api/v1/consulta/consulta-cnpj-receita/00000000000191
 ```
 
@@ -50,8 +50,11 @@ Importe `Dabra.postman_collection.json` diretamente no Postman. Configure a vari
 ## Autenticacao
 
 ```
-X-API-Key: fd_live_SUA_CHAVE
+X-API-Key: dabra_live_SUA_CHAVE
 ```
+
+Chaves novas nascem com prefixo `dabra_live_`/`dabra_test_`. Chaves emitidas antes de 24/09/2026 comecam com
+`fd_live_`/`fd_test_` e continuam funcionando normalmente — nao e preciso trocar de chave.
 
 ## Headers de resposta uteis
 

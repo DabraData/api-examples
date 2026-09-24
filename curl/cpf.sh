@@ -1,7 +1,7 @@
 #!/bin/bash
-# FonteData - Consultar CPF
-API_KEY="fd_live_SUA_CHAVE"
-BASE="https://app.fontedata.com/api/v1/consulta"
+# Dabra - Consultar CPF
+API_KEY="dabra_live_SUA_CHAVE"
+BASE="https://app.dabradata.com/api/v1/consulta"
 CPF=$(echo "${1:-12345678900}" | tr -d '.-')
 
 echo "=== CPF basico - R$ 0,24 ==="

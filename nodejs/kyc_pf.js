@@ -1,9 +1,9 @@
-// FonteData - KYC Pessoa Fisica em Node.js
+// Dabra - KYC Pessoa Fisica em Node.js
 // Custo estimado: ~R$ 9,00 por pessoa
-// Docs: https://fontedata.com/docs
+// Docs: https://dabradata.com/docs
 
-const API_KEY = 'fd_live_SUA_CHAVE';
-const BASE_URL = 'https://app.fontedata.com/api/v1/consulta';
+const API_KEY = 'dabra_live_SUA_CHAVE';
+const BASE_URL = 'https://app.dabradata.com/api/v1/consulta';
 
 const CHECKS = {
   identidade:   'receita-federal-pf',

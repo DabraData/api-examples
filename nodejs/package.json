@@ -1,13 +1,13 @@
 {
-  "name": "fontedata-nodejs-examples",
+  "name": "dabra-nodejs-examples",
   "version": "1.0.0",
-  "description": "Exemplos Node.js para a FonteData API",
+  "description": "Exemplos Node.js para a Dabra API",
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {
     "cnpj": "node cnpj.js",
     "kyc": "node kyc_pf.js"
   },
-  "keywords": ["fontedata", "cnpj", "cpf", "kyc", "brazil", "api"],
+  "keywords": ["dabra", "cnpj", "cpf", "kyc", "brazil", "api"],
   "license": "MIT"
 }

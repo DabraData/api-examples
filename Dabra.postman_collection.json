@@ -1,18 +1,18 @@
 {
   "info": {
-    "name": "FonteData API",
-    "_postman_id": "fontedata-api-v1",
-    "description": "Colecao completa da FonteData API — 108+ endpoints de dados brasileiros.\n\nConfigure a variavel de ambiente API_KEY com sua chave de API.\n\nDocumentacao: https://fontedata.com/docs",
+    "name": "Dabra API",
+    "_postman_id": "dabra-api-v1",
+    "description": "Colecao completa da Dabra API — 108+ endpoints de dados brasileiros.\n\nConfigure a variavel de ambiente API_KEY com sua chave de API.\n\nDocumentacao: https://dabradata.com/docs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     {
       "key": "base_url",
-      "value": "https://app.fontedata.com/api/v1/consulta"
+      "value": "https://app.dabradata.com/api/v1/consulta"
     },
     {
       "key": "API_KEY",
-      "value": "fd_live_SUA_CHAVE"
+      "value": "dabra_live_SUA_CHAVE"
     },
     {
       "key": "CNPJ",

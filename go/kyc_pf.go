@@ -1,8 +1,8 @@
 package main
 
-// FonteData - KYC Pessoa Fisica em Go
+// Dabra - KYC Pessoa Fisica em Go
 // Custo estimado: ~R$9,00 por pessoa
-// Docs: https://fontedata.com/docs
+// Docs: https://dabradata.com/docs
 
 import (
 	"encoding/json"
@@ -15,8 +15,8 @@ import (
 	"time"
 )
 
-const kycAPIKey  = "fd_live_SUA_CHAVE"
-const kycBaseURL = "https://app.fontedata.com/api/v1/consulta"
+const kycAPIKey  = "dabra_live_SUA_CHAVE"
+const kycBaseURL = "https://app.dabradata.com/api/v1/consulta"
 
 var kycChecks = map[string]string{
 	"identidade":   "receita-federal-pf",

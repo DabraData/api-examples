@@ -1,8 +1,8 @@
-// FonteData - Consultar CNPJ em Node.js
-// Docs: https://fontedata.com/docs
+// Dabra - Consultar CNPJ em Node.js
+// Docs: https://dabradata.com/docs
 
-const API_KEY = 'fd_live_SUA_CHAVE';
-const BASE_URL = 'https://app.fontedata.com/api/v1/consulta';
+const API_KEY = 'dabra_live_SUA_CHAVE';
+const BASE_URL = 'https://app.dabradata.com/api/v1/consulta';
 
 async function consultarCNPJ(cnpj) {
   const cnpjLimpo = cnpj.replace(/[\.\-\/]/g, '');

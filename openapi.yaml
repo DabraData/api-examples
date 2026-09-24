@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: FonteData API
+  title: Dabra API
   version: "1.0"
   description: |
     Brazilian data intelligence REST API aggregating 108+ public and private data sources.
@@ -8,21 +8,21 @@ info:
     Pre-paid credits — no subscription, no minimum commitment.
     Free account: R$50 in credits at signup, no credit card required.
   contact:
-    name: FonteData Support
+    name: Dabra Support
     url: https://wa.me/5511991220174
-    email: contato@fontedata.com
+    email: contato@dabradata.com
   license:
     name: Commercial
-    url: https://fontedata.com/terms
+    url: https://dabradata.com/terms
   x-logo:
-    url: https://fontedata.com/logo.svg
+    url: https://dabradata.com/logo.svg
 
 externalDocs:
   description: Full API documentation
-  url: https://fontedata.com/docs
+  url: https://dabradata.com/docs
 
 servers:
-  - url: https://app.fontedata.com/api/v1
+  - url: https://app.dabradata.com/api/v1
     description: Production
 
 security:
@@ -56,7 +56,7 @@ components:
       type: apiKey
       in: header
       name: X-API-Key
-      description: API key from https://app.fontedata.com
+      description: API key from https://app.dabradata.com
 
   headers:
     X-Request-Cost:
@@ -98,7 +98,7 @@ components:
     ConsultaResponse:
       type: object
       description: >
-        Response varies by endpoint. See https://fontedata.com/docs for
+        Response varies by endpoint. See https://dabradata.com/docs for
         endpoint-specific schemas.
       properties:
         cached:

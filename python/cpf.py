@@ -1,9 +1,9 @@
-# FonteData - Consultar CPF em Python
+# Dabra - Consultar CPF em Python
 # pip install requests
 import requests, sys
 
-API_KEY = "fd_live_SUA_CHAVE"
-BASE_URL = "https://app.fontedata.com/api/v1/consulta"
+API_KEY = "dabra_live_SUA_CHAVE"
+BASE_URL = "https://app.dabradata.com/api/v1/consulta"
 
 
 def consultar_cpf(cpf: str) -> dict:

@@ -1,9 +1,9 @@
 <?php
-// FonteData - Consultar CNPJ em PHP
-// Docs: https://fontedata.com/docs
+// Dabra - Consultar CNPJ em PHP
+// Docs: https://dabradata.com/docs
 
-$API_KEY = 'fd_live_SUA_CHAVE';
-$BASE_URL = 'https://app.fontedata.com/api/v1/consulta';
+$API_KEY = 'dabra_live_SUA_CHAVE';
+$BASE_URL = 'https://app.dabradata.com/api/v1/consulta';
 
 function consultarCNPJ(string $cnpj, string $apiKey, string $baseUrl): array {
     $cnpj = preg_replace('/[.\-\/]/', '', $cnpj);

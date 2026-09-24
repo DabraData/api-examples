@@ -2,8 +2,8 @@
 title: "How to Query CNPJ, CPF, and Run Automated KYC in Brazil via API"
 published: true
 tags: [api, brazil, kyc, compliance]
-cover_image: https://fontedata.com/og-image.png
-canonical_url: https://fontedata.com/guias/como-consultar-cnpj-api
+cover_image: https://dabradata.com/og-image.png
+canonical_url: https://dabradata.com/guias/como-consultar-cnpj-api
 ---
 
 Automating Brazilian public data queries should be simple. In practice, anyone who has tried knows each government agency uses a different format, different authentication, different availability. Receita Federal goes down occasionally. PGFN has obscure rate limits. OFAC returns XML from 1999.
@@ -35,11 +35,13 @@ This post shows how to do it cleanly in Python, Node.js, and cURL — with real 
 The most common endpoint — Receita Federal company data:
 
 ```bash
-curl -H "X-API-Key: fd_live_YOUR_KEY" \
-  https://app.fontedata.com/api/v1/consulta/consulta-cnpj-receita/00000000000191
+curl -H "X-API-Key: dabra_live_YOUR_KEY" \
+  https://app.dabradata.com/api/v1/consulta/consulta-cnpj-receita/00000000000191
 ```
 
 Returns JSON with company name, tax status, CNAE, address, capital, opening date. Cost: R$ 0.16.
+
+(Keys issued before 2026-09-24 start with `fd_live_`/`fd_test_` instead and keep working — no need to rotate.)
 
 In Python:
 
@@ -49,8 +51,8 @@ import requests
 def query_cnpj(cnpj: str) -> dict:
     cnpj = cnpj.replace(".", "").replace("/", "").replace("-", "")
     r = requests.get(
-        f"https://app.fontedata.com/api/v1/consulta/consulta-cnpj-receita/{cnpj}",
-        headers={"X-API-Key": "fd_live_YOUR_KEY"},
+        f"https://app.dabradata.com/api/v1/consulta/consulta-cnpj-receita/{cnpj}",
+        headers={"X-API-Key": "dabra_live_YOUR_KEY"},
         timeout=30,
     )
     r.raise_for_status()
@@ -68,8 +70,8 @@ In Node.js:
 async function queryCNPJ(cnpj) {
   const clean = cnpj.replace(/[\.\-\/]/g, '');
   const res = await fetch(
-    `https://app.fontedata.com/api/v1/consulta/consulta-cnpj-receita/${clean}`,
-    { headers: { 'X-API-Key': 'fd_live_YOUR_KEY' } }
+    `https://app.dabradata.com/api/v1/consulta/consulta-cnpj-receita/${clean}`,
+    { headers: { 'X-API-Key': 'dabra_live_YOUR_KEY' } }
   );
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
@@ -84,8 +86,8 @@ For due diligence or regulatory onboarding, you typically need to fire multiple 
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-API_KEY = "fd_live_YOUR_KEY"
-BASE    = "https://app.fontedata.com/api/v1/consulta"
+API_KEY = "dabra_live_YOUR_KEY"
+BASE    = "https://app.dabradata.com/api/v1/consulta"
 HEADERS = {"X-API-Key": API_KEY}
 
 KYC_CHECKS = {
@@ -118,7 +120,7 @@ Total cost for a full individual KYC: ~R$ 9.00 (~$1.80 USD). The same pattern wo
 
 The alternative is integrating each government agency individually: Receita Federal, CGU, PGFN, TST, TSE, Banco Central, OFAC, and so on. Each one has its own format, authentication, rate limits, and availability. Maintaining those integrations is the actual work — not the business logic.
 
-[FonteData](https://fontedata.com) consolidates 108+ sources into a single REST API with a unified JSON format and one API key.
+[Dabra](https://dabradata.com) consolidates 108+ sources into a single REST API with a unified JSON format and one API key.
 
 ## Useful response headers
 
@@ -137,17 +139,17 @@ You can build a per-query-type cost dashboard just by reading these headers.
 
 Full working examples in Python, Node.js, PHP, and Go:
 
-**[github.com/FonteData/api-examples](https://github.com/FonteData/api-examples)**
+**[github.com/DabraData/api-examples](https://github.com/DabraData/api-examples)**
 
 Includes complete flows for due diligence, admissional background checks, and batch supplier compliance monitoring.
 
 ## Getting started
 
-Free account with R$50 in credits (no credit card): **[app.fontedata.com/signup](https://app.fontedata.com/signup)**
+Free account with R$50 in credits (no credit card): **[app.dabradata.com/signup](https://app.dabradata.com/signup)**
 
-Full API reference (108+ endpoints): **[fontedata.com/docs](https://fontedata.com/docs)**
+Full API reference (108+ endpoints): **[dabradata.com/docs](https://dabradata.com/docs)**
 
-OpenAPI spec: **[fontedata.com/openapi.yaml](https://fontedata.com/openapi.yaml)**
+OpenAPI spec: **[dabradata.com/openapi.yaml](https://dabradata.com/openapi.yaml)**
 
 ---
 

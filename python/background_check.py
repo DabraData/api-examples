@@ -1,11 +1,11 @@
-# FonteData - Background Check admissional
+# Dabra - Background Check admissional
 # Custo estimado: ~R$ 5,97 por candidato
 # pip install requests
 import requests, sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-API_KEY = "fd_live_SUA_CHAVE"
-BASE_URL = "https://app.fontedata.com/api/v1/consulta"
+API_KEY = "dabra_live_SUA_CHAVE"
+BASE_URL = "https://app.dabradata.com/api/v1/consulta"
 HEADERS  = {"X-API-Key": API_KEY}
 
 CHECKS = {

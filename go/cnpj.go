@@ -1,7 +1,7 @@
 package main
 
-// FonteData - Consultar CNPJ em Go
-// Docs: https://fontedata.com/docs
+// Dabra - Consultar CNPJ em Go
+// Docs: https://dabradata.com/docs
 
 import (
 	"encoding/json"
@@ -13,8 +13,8 @@ import (
 	"time"
 )
 
-const apiKey  = "fd_live_SUA_CHAVE"
-const baseURL = "https://app.fontedata.com/api/v1/consulta"
+const apiKey  = "dabra_live_SUA_CHAVE"
+const baseURL = "https://app.dabradata.com/api/v1/consulta"
 
 func consultarCNPJ(cnpj string) (map[string]interface{}, error) {
 	cnpj = strings.NewReplacer(".", "", "/", "", "-", "").Replace(cnpj)

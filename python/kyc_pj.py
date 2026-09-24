@@ -1,11 +1,11 @@
-# FonteData - KYC completo Pessoa Juridica
+# Dabra - KYC completo Pessoa Juridica
 # Custo estimado: ~R$ 15,09 por empresa (sem socios)
 # pip install requests
 import requests, sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-API_KEY = "fd_live_SUA_CHAVE"
-BASE_URL = "https://app.fontedata.com/api/v1/consulta"
+API_KEY = "dabra_live_SUA_CHAVE"
+BASE_URL = "https://app.dabradata.com/api/v1/consulta"
 HEADERS  = {"X-API-Key": API_KEY}
 
 CHECKS = {
