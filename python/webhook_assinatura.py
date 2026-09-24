@@ -1,8 +1,10 @@
 # Dabra - Receber webhook e verificar a assinatura (stdlib, sem dependencias)
 #
-# Toda entrega traz o header X-FonteData-Signature: sha256=<hex>, um HMAC-SHA256 do
+# Toda entrega traz o header X-Dabra-Signature: sha256=<hex>, um HMAC-SHA256 do
 # corpo BRUTO da requisicao com o segredo de assinatura gerado ao cadastrar o webhook.
-# O nome do header ainda carrega a marca anterior; o valor e o calculo nao mudam.
+# Por compatibilidade, o mesmo valor tambem e enviado em X-FonteData-Signature durante
+# 12 meses (a partir de 24/09/2026). Este exemplo le o header novo e so cai no legado
+# quando o novo nao vier.
 # Documentacao: https://dabradata.com/docs/webhooks/assinatura
 #
 # Uso: DABRA_WEBHOOK_SECRET=... python webhook_assinatura.py   (escuta em :8080)
@@ -13,7 +15,13 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 SECRET = os.environ.get("DABRA_WEBHOOK_SECRET", "seu_segredo_de_assinatura")
-HEADER = "X-FonteData-Signature"
+HEADER = "X-Dabra-Signature"
+HEADER_LEGADO = "X-FonteData-Signature"  # compatibilidade por 12 meses
+
+
+def header_de_assinatura(headers) -> str:
+    """Header novo primeiro; o legado so como fallback (mesmo valor quando os dois vem)."""
+    return headers.get(HEADER) or headers.get(HEADER_LEGADO) or ""
 
 
 def assinatura_valida(corpo_bruto: bytes, header_assinatura: str, secret: str) -> bool:
@@ -24,7 +32,7 @@ def assinatura_valida(corpo_bruto: bytes, header_assinatura: str, secret: str) -
 class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         corpo = self.rfile.read(int(self.headers.get("Content-Length") or 0))
-        if not assinatura_valida(corpo, self.headers.get(HEADER), SECRET):
+        if not assinatura_valida(corpo, header_de_assinatura(self.headers), SECRET):
             self.send_response(401)
             self.end_headers()
             return

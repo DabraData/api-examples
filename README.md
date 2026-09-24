@@ -128,8 +128,9 @@ Resposta com cache de 60 segundos; as respostas das consultas ja trazem o saldo 
 ## Webhooks
 
 Eventos disponiveis: `sms.mo.received`, `sms.optout` e `topup.credited`. Cada entrega e assinada
-com HMAC-SHA256 do corpo bruto no header `X-FonteData-Signature: sha256=<hex>` (o nome do header
-ainda carrega a marca anterior; o calculo e o mesmo). Retentativas por 24 horas; deduplique por
+com HMAC-SHA256 do corpo bruto no header `X-Dabra-Signature: sha256=<hex>`. Por compatibilidade, o
+mesmo valor tambem e enviado em `X-FonteData-Signature` durante 12 meses (a partir de 24/09/2026):
+valide o header novo e use o legado so como fallback. Retentativas por 24 horas; deduplique por
 `event_id`. Exemplo em [`python/webhook_assinatura.py`](./python/webhook_assinatura.py) e
 documentacao em [dabradata.com/docs/webhooks](https://dabradata.com/docs/webhooks).
 
