@@ -17,6 +17,8 @@ e envio de SMS/OTP, por uma API REST pre-paga, com uma unica chave.
      de resposta do endpoint, a custo zero, marcado com o header `X-Example: true`. A validacao
      de parametros e a mesma da producao. Use para montar a integracao.
    - **producao** (`dabra_live_...`): consulta real, debitada do saldo.
+
+   Chaves emitidas antes de 24/09/2026 (`fd_live_...`, `fd_test_...`) continuam validas.
 3. Rode um exemplo:
 
 ```bash
@@ -166,17 +168,6 @@ toda execucao pede confirmacao do custo antes de debitar. Ver
 
 No Postman, importe a colecao e preencha a variavel `API_KEY`. Com a chave de teste, cada
 requisicao devolve o exemplo do endpoint sem custo.
-
-## Continuidade
-
-Dabra e a marca da FONTEDATA TECNOLOGIA LTDA (CNPJ 67.011.070/0001-16), antes apresentada como
-FonteData. A empresa, a conta, o saldo e a API sao os mesmos; so mudaram o nome e os enderecos.
-
-- Chaves novas comecam com `dabra_live_` ou `dabra_test_`. Chaves emitidas antes de 24/09/2026
-  comecam com `fd_live_` ou `fd_test_` e continuam validas; nao e preciso trocar.
-- Este repositorio era `FonteData/api-examples` e agora e `DabraData/api-examples`. O GitHub
-  redireciona o endereco antigo, mas atualize o remote:
-  `git remote set-url origin https://github.com/DabraData/api-examples.git`.
 
 ## Links
 
