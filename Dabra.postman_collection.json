@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Dabra API",
-    "description": "133 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-09-24.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
+    "description": "132 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-10-11.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {
@@ -59,6 +59,56 @@
     }
   ],
   "item": [
+    {
+      "name": "Comprovante da consulta",
+      "item": [
+        {
+          "name": "Consulta com comprovante (tst-cndt, comprovante=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Emite e consulta a Certidão Negativa de Débitos Trabalhistas (CNDT) do TST — Banco Nacional de Devedores Trabalhistas (BNDT) — para CPF ou CNPJ. Aponta se há débito trabalhista pendente e lista os processos.\n\nPreco: R$ 0,54 por consulta.\nDocumentacao: https://dabradata.com/docs/certidoes/tst-cndt\n\nCom comprovante=1 a resposta traz comprovante: [link]. O link e aberto (sem chave), vale 7 dias; 202 = ainda sendo preparado, 410 = vencido. Acrescimo de 25% sobre o preco, cobrado so quando o link vem. Guia: https://dabradata.com/docs/comprovante",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/tst-cndt?cnpj={{CNPJ}}&comprovante=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "tst-cndt"
+              ],
+              "query": [
+                {
+                  "key": "cpf",
+                  "value": "{{CPF}}",
+                  "disabled": true,
+                  "description": "CPF (11 dígitos) do titular da certidão, somente números. Informe cpf OU cnpj."
+                },
+                {
+                  "key": "cnpj",
+                  "value": "{{CNPJ}}",
+                  "disabled": false,
+                  "description": "CNPJ (14 dígitos) do titular da certidão, somente números. Informe cpf OU cnpj."
+                },
+                {
+                  "key": "comprovante",
+                  "value": "1",
+                  "disabled": false,
+                  "description": "Pede o comprovante da consulta (link valido por 7 dias)."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
     {
       "name": "Pessoa Física",
       "item": [
@@ -336,6 +386,12 @@
                   "value": "{{CPF}}",
                   "disabled": false,
                   "description": "CPF (somente números, 11 dígitos)"
+                },
+                {
+                  "key": "data_nascimento",
+                  "value": "",
+                  "disabled": true,
+                  "description": "OPCIONAL (DD/MM/AAAA). Só é necessária quando a resposta vier com status requer_dados (ex.: CPF de menor de idade): reenvie a consulta com a data."
                 }
               ]
             }
@@ -369,6 +425,12 @@
                       "value": "{{CPF}}",
                       "disabled": false,
                       "description": "CPF (somente números, 11 dígitos)"
+                    },
+                    {
+                      "key": "data_nascimento",
+                      "value": "",
+                      "disabled": true,
+                      "description": "OPCIONAL (DD/MM/AAAA). Só é necessária quando a resposta vier com status requer_dados (ex.: CPF de menor de idade): reenvie a consulta com a data."
                     }
                   ]
                 }
@@ -888,7 +950,7 @@
           ]
         },
         {
-          "name": "Prefeitura SP - CADIN (cadin-prefeitura-SP)",
+          "name": "Prefeitura SP - CADIN (cadin-prefeitura-sp)",
           "request": {
             "method": "GET",
             "header": [
@@ -897,9 +959,9 @@
                 "value": "application/json"
               }
             ],
-            "description": "Consulta pendências no CADIN da Prefeitura de São Paulo por CNPJ ou CPF. Retorna mensagem e lista de pendências com órgão responsável e local para regularização.\n\nPreco: R$ 0,28 por consulta.\nDocumentacao: https://dabradata.com/docs/pessoa-juridica/cadin-prefeitura-SP",
+            "description": "Consulta pendências no CADIN da Prefeitura de São Paulo por CNPJ ou CPF. Retorna mensagem e lista de pendências com órgão responsável e local para regularização.\n\nPreco: R$ 0,28 por consulta.\nDocumentacao: https://dabradata.com/docs/pessoa-juridica/cadin-prefeitura-sp",
             "url": {
-              "raw": "{{baseUrl}}/api/v1/consulta/cadin-prefeitura-SP?cnpj={{CNPJ}}",
+              "raw": "{{baseUrl}}/api/v1/consulta/cadin-prefeitura-sp?cnpj={{CNPJ}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -907,7 +969,7 @@
                 "api",
                 "v1",
                 "consulta",
-                "cadin-prefeitura-SP"
+                "cadin-prefeitura-sp"
               ],
               "query": [
                 {
@@ -4061,7 +4123,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"anoObito\": null,\n  \"numeroCPF\": \"string\",\n  \"nomeSocial\": null,\n  \"dataEmissao\": \"string\",\n  \"possuiObito\": \"boolean\",\n  \"dataInscricao\": \"string\",\n  \"dataNascimento\": \"string\",\n  \"link_validacao\": \"string\",\n  \"nomePessoaFisica\": \"string\",\n  \"digitoVerificador\": \"string\",\n  \"situacaoCadastral\": \"string\",\n  \"codigoControleComprovante\": \"string\",\n  \"dataInscricaoAnterior1990\": null\n}"
+              "body": "{\n  \"anoObito\": null,\n  \"numeroCPF\": \"string\",\n  \"nomeSocial\": null,\n  \"dataEmissao\": \"string\",\n  \"possuiObito\": \"boolean\",\n  \"dataInscricao\": \"string\",\n  \"dataNascimento\": \"string\",\n  \"link_validacao\": \"string\",\n  \"nomePessoaFisica\": \"string\",\n  \"digitoVerificador\": \"string\",\n  \"situacaoCadastral\": \"string\",\n  \"codigoControleComprovante\": \"string\",\n  \"dataInscricaoAnterior1990\": null,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -4266,7 +4328,7 @@
                 },
                 {
                   "key": "data_nascimento",
-                  "value": "01/01/1990",
+                  "value": "",
                   "disabled": true,
                   "description": "OPCIONAL (DD/MM/AAAA). Não é preciso informar: sem ela, a data é resolvida pelo próprio CPF. Se você já tem a data em cadastro, envie-a — pula uma etapa de enriquecimento e deixa a consulta mais rápida."
                 }
@@ -4311,7 +4373,7 @@
                     },
                     {
                       "key": "data_nascimento",
-                      "value": "01/01/1990",
+                      "value": "",
                       "disabled": true,
                       "description": "OPCIONAL (DD/MM/AAAA). Não é preciso informar: sem ela, a data é resolvida pelo próprio CPF. Se você já tem a data em cadastro, envie-a — pula uma etapa de enriquecimento e deixa a consulta mais rápida."
                     }
@@ -5141,7 +5203,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Verifica a situação cadastral e o regime de tributação de ICMS junto à SEFAZ. Basta o CNPJ: o estado do estabelecimento é identificado automaticamente. Essencial para validação fiscal, análise de risco e conformidade regulatória de empresas.\n\nPreco: R$ 0,29 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/sintegra-estadual",
+            "description": "Verifica a situação cadastral e o regime de tributação de ICMS junto à SEFAZ, em todas as UFs. Basta o CNPJ: o estado do estabelecimento é identificado automaticamente. Essencial para validação fiscal, análise de risco e conformidade regulatória de empresas.\n\nPreco: R$ 0,29 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/sintegra-estadual",
             "url": {
               "raw": "{{baseUrl}}/api/v1/consulta/sintegra-estadual?cnpj={{CNPJ}}",
               "host": [
@@ -5180,7 +5242,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Verifica a situação cadastral e o regime de tributação de ICMS junto à SEFAZ. Basta o CNPJ: o estado do estabelecimento é identificado automaticamente. Essencial para validação fiscal, análise de risco e conformidade regulatória de empresas.\n\nPreco: R$ 0,29 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/sintegra-estadual",
+                "description": "Verifica a situação cadastral e o regime de tributação de ICMS junto à SEFAZ, em todas as UFs. Basta o CNPJ: o estado do estabelecimento é identificado automaticamente. Essencial para validação fiscal, análise de risco e conformidade regulatória de empresas.\n\nPreco: R$ 0,29 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/sintegra-estadual",
                 "url": {
                   "raw": "{{baseUrl}}/api/v1/consulta/sintegra-estadual?cnpj={{CNPJ}}",
                   "host": [
@@ -5222,6 +5284,88 @@
                 }
               ],
               "body": "{\n  \"ie\": \"string\",\n  \"uf\": \"string\",\n  \"cep\": \"string\",\n  \"cnpj\": \"string\",\n  \"ufie\": \"string\",\n  \"bairro\": \"string\",\n  \"numero\": \"string\",\n  \"situacao\": \"string\",\n  \"telefone\": \"string\",\n  \"municipio\": \"string\",\n  \"logradouro\": \"string\",\n  \"complemento\": \"string\",\n  \"situacao_data\": \"string\",\n  \"regimeApuracao\": \"string\",\n  \"nomeEmpresarial\": \"string\",\n  \"atividadeEconomicaPrincipal\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Situação Fiscal Federal da Empresa (situacao-fiscal-pj)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Situação fiscal federal da empresa inteira por CNPJ: dívida ativa da União separada por situação (em cobrança, negociada, garantida, suspensa), parcelamentos ativos na Receita Federal, regime tributário, imunidade, benefícios fiscais e alertas, com a data de referência de cada bloco.\n\nPreco: R$ 0,69 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/situacao-fiscal-pj",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/situacao-fiscal-pj?cnpj={{CNPJ}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "situacao-fiscal-pj"
+              ],
+              "query": [
+                {
+                  "key": "cnpj",
+                  "value": "{{CNPJ}}",
+                  "disabled": false,
+                  "description": "CNPJ da empresa (matriz ou filial), com ou sem máscara. Aceita o CNPJ alfanumérico. A resposta cobre a empresa inteira (todos os estabelecimentos da mesma raiz)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemplo (chave de teste, X-Example: true)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "Situação fiscal federal da empresa inteira por CNPJ: dívida ativa da União separada por situação (em cobrança, negociada, garantida, suspensa), parcelamentos ativos na Receita Federal, regime tributário, imunidade, benefícios fiscais e alertas, com a data de referência de cada bloco.\n\nPreco: R$ 0,69 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/situacao-fiscal-pj",
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/consulta/situacao-fiscal-pj?cnpj={{CNPJ}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "consulta",
+                    "situacao-fiscal-pj"
+                  ],
+                  "query": [
+                    {
+                      "key": "cnpj",
+                      "value": "{{CNPJ}}",
+                      "disabled": false,
+                      "description": "CNPJ da empresa (matriz ou filial), com ou sem máscara. Aceita o CNPJ alfanumérico. A resposta cobre a empresa inteira (todos os estabelecimentos da mesma raiz)."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Example",
+                  "value": "true"
+                }
+              ],
+              "body": "{\n  \"cnpj\": \"84429695000111\",\n  \"pgfn\": {\n    \"itens\": [\n      {\n        \"cnpj\": \"84429695000111\",\n        \"valor\": 1250000.0,\n        \"origem\": \"geral\",\n        \"receita\": \"Receita da dívida ativa - IRPJ\",\n        \"subflag\": null,\n        \"ajuizada\": true,\n        \"situacao\": \"garantida\",\n        \"data_inscricao\": \"2019-05-20\",\n        \"numero_inscricao\": \"00000000000000\",\n        \"situacao_inscricao\": \"ATIVA AJUIZADA - GARANTIA - SEGURO GARANTIA\"\n      }\n    ],\n    \"resumo\": {\n      \"outras\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"garantida\": {\n        \"qtd\": 10,\n        \"valor\": 3930747.14,\n        \"qtd_ajuizada\": 10,\n        \"valor_ajuizado\": 3930747.14\n      },\n      \"negociada\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"subflags\": {\n          \"negociacao_bloqueada\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          }\n        },\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"em_cobranca\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"subflags\": {\n          \"protesto\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"em_negociacao\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"discussao_judicial\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"falencia_concordata\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"parcelamento_rescindido\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          }\n        },\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"beneficio_fiscal\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"suspensa_judicial\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      }\n    },\n    \"ajuizada\": {\n      \"qtd\": 0,\n      \"valor\": 0.0\n    },\n    \"aplicavel\": true,\n    \"tem_inscricao\": true,\n    \"qtd_inscricoes\": 10,\n    \"itens_truncados\": false,\n    \"cnpjs_com_inscricao\": 1,\n    \"em_cobranca_mais_antiga\": null,\n    \"em_cobranca_no_cnpj_consultado\": {\n      \"qtd\": 0,\n      \"valor\": 0.0\n    }\n  },\n  \"escopo\": \"raiz\",\n  \"fontes\": {\n    \"pgfn\": {\n      \"referencia\": \"2026_trimestre_02\",\n      \"atualizado_em\": \"2026-08-11\"\n    },\n    \"cadastro\": {\n      \"referencia\": \"2026-09\",\n      \"atualizado_em\": \"2026-09-14\"\n    },\n    \"beneficios_ecf\": {\n      \"referencia\": \"2025\",\n      \"atualizado_em\": \"2026-10-09\"\n    },\n    \"beneficios_dirbi\": {\n      \"referencia\": \"2026-06\",\n      \"atualizado_em\": \"2026-10-09\"\n    },\n    \"imunidade_isencao\": {\n      \"referencia\": \"2025\",\n      \"atualizado_em\": \"2026-10-09\"\n    },\n    \"parcelamentos_rfb\": {\n      \"referencia\": \"2026-10-06\",\n      \"atualizado_em\": \"2026-10-07\"\n    },\n    \"regime_tributario\": {\n      \"referencia\": \"2024\",\n      \"atualizado_em\": \"2026-10-08\"\n    }\n  },\n  \"alertas\": [],\n  \"cnpj_raiz\": \"84429695\",\n  \"cadastro_minimo\": {\n    \"uf\": \"SC\",\n    \"mei\": {\n      \"optante\": false,\n      \"data_opcao\": null,\n      \"data_exclusao\": null\n    },\n    \"porte\": \"DEMAIS\",\n    \"simples\": {\n      \"optante\": false,\n      \"data_opcao\": null,\n      \"data_exclusao\": null\n    },\n    \"municipio\": \"JARAGUA DO SUL\",\n    \"cnpj_matriz\": \"84429695000111\",\n    \"razao_social\": \"WEG SA\",\n    \"cnpj_consultado\": {\n      \"matriz\": true,\n      \"situacao_cadastral\": \"ATIVA\"\n    },\n    \"natureza_juridica\": {\n      \"codigo\": \"2046\",\n      \"descricao\": \"Sociedade Anônima Aberta\"\n    },\n    \"situacao_cadastral\": \"ATIVA\",\n    \"data_situacao_cadastral\": \"2005-11-03\"\n  },\n  \"imunidade_isencao\": {\n    \"itens\": [],\n    \"aplicavel\": true,\n    \"motivo_nao_aplicavel\": null\n  },\n  \"parcelamentos_rfb\": {\n    \"qtd\": 0,\n    \"tem\": false,\n    \"itens\": [],\n    \"por_tipo\": [],\n    \"aplicavel\": true,\n    \"saldo_devedor\": 0.0,\n    \"itens_truncados\": false,\n    \"valor_parcelado\": 0.0,\n    \"adesao_mais_recente\": null,\n    \"tem_parcelamento_simples_mei\": false\n  },\n  \"regime_tributario\": {\n    \"itens\": [\n      {\n        \"ano\": 2024,\n        \"formas\": [\n          \"LUCRO REAL\"\n        ],\n        \"forma_tributacao\": \"LUCRO REAL\"\n      },\n      {\n        \"ano\": 2023,\n        \"formas\": [\n          \"LUCRO REAL\"\n        ],\n        \"forma_tributacao\": \"LUCRO REAL\"\n      },\n      {\n        \"ano\": 2022,\n        \"formas\": [\n          \"LUCRO REAL\"\n        ],\n        \"forma_tributacao\": \"LUCRO REAL\"\n      }\n    ],\n    \"aplicavel\": true,\n    \"motivo_nao_aplicavel\": null\n  },\n  \"beneficios_fiscais\": {\n    \"ecf\": {\n      \"itens\": [\n        {\n          \"ano\": 2025,\n          \"total\": 1520000.0,\n          \"rubricas\": [\n            {\n              \"valor\": 1520000.0,\n              \"rubrica\": \"pat_deducao_ir\",\n              \"descricao\": \"PAT (dedução do IR)\"\n            }\n          ]\n        }\n      ]\n    },\n    \"dirbi\": {\n      \"tem\": false,\n      \"total_12m\": 0.0,\n      \"beneficios\": [],\n      \"ultimo_mes\": null,\n      \"primeiro_mes\": null,\n      \"por_tributo_12m\": [],\n      \"meses_declarados\": 0,\n      \"beneficios_truncados\": false\n    },\n    \"aplicavel\": true,\n    \"motivo_nao_aplicavel\": null\n  }\n}"
             }
           ]
         },
@@ -5349,7 +5493,7 @@
                 },
                 {
                   "key": "data_nascimento",
-                  "value": "01/01/1990",
+                  "value": "",
                   "disabled": true,
                   "description": "Data de nascimento DD/MM/AAAA"
                 },
@@ -5406,7 +5550,7 @@
                     },
                     {
                       "key": "data_nascimento",
-                      "value": "01/01/1990",
+                      "value": "",
                       "disabled": true,
                       "description": "Data de nascimento DD/MM/AAAA"
                     },
@@ -6365,6 +6509,105 @@
       ]
     },
     {
+      "name": "Patrimônio",
+      "item": [
+        {
+          "name": "Aeronaves por CPF/CNPJ (RAB/ANAC) (anac-aeronaves)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Lista todas as aeronaves registradas no Registro Aeronáutico Brasileiro (RAB/ANAC) para um CPF ou CNPJ — como proprietário ou operador — com o cadastro completo de cada uma (fabricante, modelo, série, situação, gravame, datas). Útil para cobrança de inadimplentes, due diligence e pesquisa patrimonial.\n\nPreco: R$ 0,67 por consulta.\nDocumentacao: https://dabradata.com/docs/patrimonio/anac-aeronaves",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/anac-aeronaves?cnpj={{CNPJ}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "anac-aeronaves"
+              ],
+              "query": [
+                {
+                  "key": "cpf",
+                  "value": "{{CPF}}",
+                  "disabled": true,
+                  "description": "CPF do titular a consultar — 11 dígitos, com ou sem pontuação. A máscara é removida antes da validação e o dígito verificador é conferido."
+                },
+                {
+                  "key": "cnpj",
+                  "value": "{{CNPJ}}",
+                  "disabled": false,
+                  "description": "CNPJ da empresa a consultar — 14 caracteres, com ou sem pontuação. Aceita o CNPJ alfanumérico (12 posições em A-Z/0-9 mais 2 dígitos verificadores). A máscara é removida antes da validação e o dígito verificador é conferido."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemplo (chave de teste, X-Example: true)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "Lista todas as aeronaves registradas no Registro Aeronáutico Brasileiro (RAB/ANAC) para um CPF ou CNPJ — como proprietário ou operador — com o cadastro completo de cada uma (fabricante, modelo, série, situação, gravame, datas). Útil para cobrança de inadimplentes, due diligence e pesquisa patrimonial.\n\nPreco: R$ 0,67 por consulta.\nDocumentacao: https://dabradata.com/docs/patrimonio/anac-aeronaves",
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/consulta/anac-aeronaves?cnpj={{CNPJ}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "consulta",
+                    "anac-aeronaves"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpf",
+                      "value": "{{CPF}}",
+                      "disabled": true,
+                      "description": "CPF do titular a consultar — 11 dígitos, com ou sem pontuação. A máscara é removida antes da validação e o dígito verificador é conferido."
+                    },
+                    {
+                      "key": "cnpj",
+                      "value": "{{CNPJ}}",
+                      "disabled": false,
+                      "description": "CNPJ da empresa a consultar — 14 caracteres, com ou sem pontuação. Aceita o CNPJ alfanumérico (12 posições em A-Z/0-9 mais 2 dígitos verificadores). A máscara é removida antes da validação e o dígito verificador é conferido."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Example",
+                  "value": "true"
+                }
+              ],
+              "body": "{\n  \"status\": \"Constam 2 aeronaves para o CPF/CNPJ pesquisado.\",\n  \"aeronaves\": [\n    {\n      \"marca\": \"PR-XAB\",\n      \"classe\": \"L1T\",\n      \"modelo\": \"PC-12/45\",\n      \"gravame\": {\n        \"possuiGravame\": false,\n        \"depositarioNome\": null,\n        \"depositarioDocumento\": null\n      },\n      \"motivos\": null,\n      \"vinculo\": \"OPERADOR\",\n      \"operador\": {\n        \"nome\": \"AEREO EXEMPLO TRANSPORTES LTDA\",\n        \"documento\": \"11.111.111/0001-11\"\n      },\n      \"tipoIcao\": \"PC12\",\n      \"fabricante\": \"PILATUS\",\n      \"numeroSerie\": \"412\",\n      \"situacaoRab\": null,\n      \"proprietario\": {\n        \"nome\": \"EXEMPLO LEASING DE AERONAVES S.A.\",\n        \"documento\": \"22.222.222/0001-22\"\n      },\n      \"dataValidadeCa\": \"02/09/2026\",\n      \"dataValidadeRca\": null,\n      \"categoriaRegistro\": \"TPX\",\n      \"tipoVooAutorizado\": null,\n      \"numeroCertificados\": \"19004\",\n      \"pesoMaximoDecolagemKg\": 4500,\n      \"tipoHabilitacaoPilotos\": \"MNTE\",\n      \"dataCompraTransferencia\": \"16/09/2013\",\n      \"numeroMaximoPassageiros\": 8,\n      \"situacaoAeronavegabilidade\": \"NORMAL\"\n    },\n    {\n      \"marca\": \"PP-XCD\",\n      \"classe\": \"L1T\",\n      \"modelo\": \"PC-12/45\",\n      \"gravame\": {\n        \"possuiGravame\": false,\n        \"depositarioNome\": null,\n        \"depositarioDocumento\": null\n      },\n      \"motivos\": null,\n      \"vinculo\": \"PROPRIETARIO_E_OPERADOR\",\n      \"operador\": {\n        \"nome\": \"AEREO EXEMPLO TRANSPORTES LTDA\",\n        \"documento\": \"11.111.111/0001-11\"\n      },\n      \"tipoIcao\": \"PC12\",\n      \"fabricante\": \"PILATUS\",\n      \"numeroSerie\": \"533\",\n      \"situacaoRab\": null,\n      \"proprietario\": {\n        \"nome\": \"AEREO EXEMPLO TRANSPORTES LTDA\",\n        \"documento\": \"11.111.111/0001-11\"\n      },\n      \"dataValidadeCa\": \"29/09/2026\",\n      \"dataValidadeRca\": null,\n      \"categoriaRegistro\": \"TPX\",\n      \"tipoVooAutorizado\": null,\n      \"numeroCertificados\": \"19288\",\n      \"pesoMaximoDecolagemKg\": 4500,\n      \"tipoHabilitacaoPilotos\": \"MNTE\",\n      \"dataCompraTransferencia\": \"09/06/2014\",\n      \"numeroMaximoPassageiros\": 8,\n      \"situacaoAeronavegabilidade\": \"NORMAL\"\n    }\n  ],\n  \"tipoPessoa\": \"PJ\",\n  \"possuiAeronave\": true,\n  \"documentoConsultado\": \"11.111.111/0001-11\",\n  \"quantidadeAeronaves\": 2\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Antifraude",
       "item": [
         {
@@ -6623,7 +6866,7 @@
                   "key": "uf",
                   "value": "SP",
                   "disabled": true,
-                  "description": "UF do estado (ex: SP, RJ, MG)"
+                  "description": "Estados atendidos: PE, PI, SC e SP."
                 },
                 {
                   "key": "cpf",
@@ -6686,7 +6929,7 @@
                       "key": "uf",
                       "value": "SP",
                       "disabled": true,
-                      "description": "UF do estado (ex: SP, RJ, MG)"
+                      "description": "Estados atendidos: PE, PI, SC e SP."
                     },
                     {
                       "key": "cpf",
@@ -6828,7 +7071,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"processos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeEntidade\": \"string\",\n  \"codigoCertidao\": \"string\",\n  \"possuiProcesso\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"status\": \"string\",\n  \"processos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeEntidade\": \"string\",\n  \"codigoCertidao\": \"string\",\n  \"possuiProcesso\": \"boolean\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -7004,7 +7247,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"sancoes\": null,\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeEntidade\": \"string\",\n  \"possuiSancao\": \"boolean\",\n  \"codigoValidacao\": \"string\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"status\": \"string\",\n  \"sancoes\": null,\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeEntidade\": \"string\",\n  \"possuiSancao\": \"boolean\",\n  \"codigoValidacao\": \"string\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -7672,72 +7915,6 @@
               ]
             }
           }
-        },
-        {
-          "name": "Declaração PRONAF - PF (dap-pf)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "description": "Consulta informações de agricultores familiares para validação de elegibilidade ao PRONAF, retornando dados pessoais, da propriedade rural e renda familiar.\n\nPreco: R$ 0,86 por consulta.\nDocumentacao: https://dabradata.com/docs/rural/dap-pf",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/consulta/dap-pf?cpf={{CPF}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "consulta",
-                "dap-pf"
-              ],
-              "query": [
-                {
-                  "key": "cpf",
-                  "value": "{{CPF}}",
-                  "disabled": false,
-                  "description": "CPF (somente números, 11 dígitos)"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Declaração PRONAF - PJ (dap-pj)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "description": "Consulta dados de organizações agrícolas familiares com DAP ativa, retornando informações cadastrais, representante legal, composição societária e DAPs por município.\n\nPreco: R$ 1,03 por consulta.\nDocumentacao: https://dabradata.com/docs/rural/dap-pj",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/consulta/dap-pj?cnpj={{CNPJ}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "consulta",
-                "dap-pj"
-              ],
-              "query": [
-                {
-                  "key": "cnpj",
-                  "value": "{{CNPJ}}",
-                  "disabled": false,
-                  "description": "CNPJ (somente números, 14 dígitos)"
-                }
-              ]
-            }
-          }
         }
       ]
     },
@@ -8135,7 +8312,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Consulta a Certidão Conjunta de Débitos (CCD) de uma pessoa física, comprovando a inexistência de pendências financeiras, civis ou criminais em âmbitos federal, estadual e municipal.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/certidoes/ccd-pf",
+            "description": "Consulta a Certidão Conjunta de Débitos relativos a Tributos Federais e à Dívida Ativa da União (RFB/PGFN) de uma pessoa física, a partir do CPF, indicando regularidade fiscal, dívidas listadas, validade e código de controle. Não substitui certidões estaduais ou municipais.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/certidoes/ccd-pf",
             "url": {
               "raw": "{{baseUrl}}/api/v1/consulta/ccd-pf?cpf={{CPF}}",
               "host": [
@@ -8168,7 +8345,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Consulta a Certidão Conjunta de Débitos (CCD) de uma pessoa física, comprovando a inexistência de pendências financeiras, civis ou criminais em âmbitos federal, estadual e municipal.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/certidoes/ccd-pf",
+                "description": "Consulta a Certidão Conjunta de Débitos relativos a Tributos Federais e à Dívida Ativa da União (RFB/PGFN) de uma pessoa física, a partir do CPF, indicando regularidade fiscal, dívidas listadas, validade e código de controle. Não substitui certidões estaduais ou municipais.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/certidoes/ccd-pf",
                 "url": {
                   "raw": "{{baseUrl}}/api/v1/consulta/ccd-pf?cpf={{CPF}}",
                   "host": [
@@ -8203,7 +8380,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"cpf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"titulo\": \"string\",\n  \"portaria\": \"string\",\n  \"emitidaAs\": \"string\",\n  \"validaAte\": \"string\",\n  \"listaDividas\": [],\n  \"linkValidacao\": \"string\",\n  \"possuiDividas\": \"boolean\",\n  \"regularidadeFiscal\": \"boolean\",\n  \"validadeProrrogada\": null,\n  \"codigoControleCertidao\": \"string\",\n  \"possuiDividaAtivaUniao\": null,\n  \"possuiDebitosReceitaFederal\": null\n}"
+              "body": "{\n  \"cpf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"titulo\": \"string\",\n  \"portaria\": \"string\",\n  \"emitidaAs\": \"string\",\n  \"validaAte\": \"string\",\n  \"listaDividas\": [],\n  \"linkValidacao\": \"string\",\n  \"possuiDividas\": \"boolean\",\n  \"regularidadeFiscal\": \"boolean\",\n  \"validadeProrrogada\": null,\n  \"codigoControleCertidao\": \"string\",\n  \"possuiDividaAtivaUniao\": null,\n  \"possuiDebitosReceitaFederal\": null,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8285,7 +8462,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"cnpj\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"titulo\": \"string\",\n  \"portaria\": \"string\",\n  \"emitidaAs\": \"string\",\n  \"validaAte\": \"string\",\n  \"listaDividas\": [],\n  \"linkValidacao\": \"string\",\n  \"possuiDividas\": \"boolean\",\n  \"regularidadeFiscal\": \"boolean\",\n  \"validadeProrrogada\": null,\n  \"situacaoCadastralCnpj\": null,\n  \"codigoControleCertidao\": \"string\",\n  \"possuiDividaAtivaUniao\": null,\n  \"possuiDebitosReceitaFederal\": null\n}"
+              "body": "{\n  \"cnpj\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"titulo\": \"string\",\n  \"portaria\": \"string\",\n  \"emitidaAs\": \"string\",\n  \"validaAte\": \"string\",\n  \"listaDividas\": [],\n  \"linkValidacao\": \"string\",\n  \"possuiDividas\": \"boolean\",\n  \"regularidadeFiscal\": \"boolean\",\n  \"validadeProrrogada\": null,\n  \"situacaoCadastralCnpj\": null,\n  \"codigoControleCertidao\": \"string\",\n  \"possuiDividaAtivaUniao\": null,\n  \"possuiDebitosReceitaFederal\": null,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8379,7 +8556,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"processos\": [],\n  \"dataValidade\": \"string\",\n  \"dataExpedicao\": \"string\",\n  \"numeroCertidao\": \"string\",\n  \"possuiProcesso\": \"boolean\",\n  \"totalProcessos\": \"number\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"processos\": [],\n  \"dataValidade\": \"string\",\n  \"dataExpedicao\": \"string\",\n  \"numeroCertidao\": \"string\",\n  \"possuiProcesso\": \"boolean\",\n  \"totalProcessos\": \"number\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         }
@@ -8758,88 +8935,6 @@
           ]
         },
         {
-          "name": "Título Eleitoral e Local de Votação por CPF (tse-titulo-info)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "description": "Obtém informações sobre título de eleitor e local de votação de um cidadão, incluindo seção eleitoral, zona e status de biometria coletada.\n\nPreco: R$ 1,65 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo-info",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/consulta/tse-titulo-info?cpf={{CPF}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "consulta",
-                "tse-titulo-info"
-              ],
-              "query": [
-                {
-                  "key": "cpf",
-                  "value": "{{CPF}}",
-                  "disabled": false,
-                  "description": "CPF do cidadão (11 dígitos). Único input — mãe e nascimento são enriquecidos."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "Exemplo (chave de teste, X-Example: true)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "description": "Obtém informações sobre título de eleitor e local de votação de um cidadão, incluindo seção eleitoral, zona e status de biometria coletada.\n\nPreco: R$ 1,65 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo-info",
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/consulta/tse-titulo-info?cpf={{CPF}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "consulta",
-                    "tse-titulo-info"
-                  ],
-                  "query": [
-                    {
-                      "key": "cpf",
-                      "value": "{{CPF}}",
-                      "disabled": false,
-                      "description": "CPF do cidadão (11 dígitos). Único input — mãe e nascimento são enriquecidos."
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "X-Example",
-                  "value": "true"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"nome_mae\": \"string\",\n  \"identificacao\": {\n    \"eleitor\": \"string\",\n    \"inscricao\": null\n  },\n  \"data_nascimento\": \"string\",\n  \"biometriaColetada\": null,\n  \"domicilioEleitoral\": {\n    \"uf\": null,\n    \"zona\": null,\n    \"local\": null,\n    \"secao\": null,\n    \"bairro\": null,\n    \"numero\": null,\n    \"municipio\": null,\n    \"logradouro\": null,\n    \"proximaEleicao\": null\n  }\n}"
-            }
-          ]
-        },
-        {
           "name": "Título de Eleitor e Local de Votação (tse-titulo)",
           "request": {
             "method": "GET",
@@ -8849,7 +8944,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Consulta a situação do título de eleitor e o local de votação de um cidadão a partir do CPF. Retorna a identificação do eleitor (nome e número de inscrição), a situação da regularidade eleitoral, se a biometria foi coletada, e o domicílio eleitoral completo: UF, município, zona, seção, bairro, logradouro e número. Informar nome da mãe e data de nascimento eleva a taxa de correspondência e desambigua homônimos.\n\nPreco: R$ 1,50 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo",
+            "description": "Consulta a situação do título de eleitor e o local de votação de um cidadão a partir do CPF. Retorna a identificação do eleitor (nome e número de inscrição), a situação da regularidade eleitoral, se a biometria foi coletada, e o domicílio eleitoral completo: UF, município, zona, seção, bairro, logradouro e número. Informar nome da mãe e data de nascimento eleva a taxa de correspondência e desambigua homônimos.\n\nPreco: R$ 1,99 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo",
             "url": {
               "raw": "{{baseUrl}}/api/v1/consulta/tse-titulo?cpf={{CPF}}&nome_mae=&data_nascimento=01/01/1990",
               "host": [
@@ -8872,13 +8967,13 @@
                   "key": "nome_mae",
                   "value": "",
                   "disabled": false,
-                  "description": "Nome completo da mãe. Obrigatório — a base oficial exige nome da mãe e data de nascimento. Só tem o CPF? Use o endpoint tse-titulo-info (enriquece automaticamente)."
+                  "description": "Nome completo da mãe. Obrigatório — a base oficial exige nome da mãe e data de nascimento."
                 },
                 {
                   "key": "data_nascimento",
                   "value": "01/01/1990",
                   "disabled": false,
-                  "description": "Data de nascimento (DD/MM/AAAA). Obrigatório — a base oficial exige nome da mãe e data de nascimento. Só tem o CPF? Use tse-titulo-info."
+                  "description": "Data de nascimento (DD/MM/AAAA). Obrigatório — a base oficial exige nome da mãe e data de nascimento."
                 }
               ]
             }
@@ -8894,7 +8989,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Consulta a situação do título de eleitor e o local de votação de um cidadão a partir do CPF. Retorna a identificação do eleitor (nome e número de inscrição), a situação da regularidade eleitoral, se a biometria foi coletada, e o domicílio eleitoral completo: UF, município, zona, seção, bairro, logradouro e número. Informar nome da mãe e data de nascimento eleva a taxa de correspondência e desambigua homônimos.\n\nPreco: R$ 1,50 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo",
+                "description": "Consulta a situação do título de eleitor e o local de votação de um cidadão a partir do CPF. Retorna a identificação do eleitor (nome e número de inscrição), a situação da regularidade eleitoral, se a biometria foi coletada, e o domicílio eleitoral completo: UF, município, zona, seção, bairro, logradouro e número. Informar nome da mãe e data de nascimento eleva a taxa de correspondência e desambigua homônimos.\n\nPreco: R$ 1,99 por consulta.\nDocumentacao: https://dabradata.com/docs/eleitoral/tse-titulo",
                 "url": {
                   "raw": "{{baseUrl}}/api/v1/consulta/tse-titulo?cpf={{CPF}}&nome_mae=&data_nascimento=01/01/1990",
                   "host": [
@@ -8917,13 +9012,13 @@
                       "key": "nome_mae",
                       "value": "",
                       "disabled": false,
-                      "description": "Nome completo da mãe. Obrigatório — a base oficial exige nome da mãe e data de nascimento. Só tem o CPF? Use o endpoint tse-titulo-info (enriquece automaticamente)."
+                      "description": "Nome completo da mãe. Obrigatório — a base oficial exige nome da mãe e data de nascimento."
                     },
                     {
                       "key": "data_nascimento",
                       "value": "01/01/1990",
                       "disabled": false,
-                      "description": "Data de nascimento (DD/MM/AAAA). Obrigatório — a base oficial exige nome da mãe e data de nascimento. Só tem o CPF? Use tse-titulo-info."
+                      "description": "Data de nascimento (DD/MM/AAAA). Obrigatório — a base oficial exige nome da mãe e data de nascimento."
                     }
                   ]
                 }
@@ -9110,7 +9205,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"status\": \"A empresa está regular perante o Fundo de Garantia do Tempo de Serviço - FGTS.\",\n  \"endereco\": {\n    \"uf\": \"SE\",\n    \"cep\": \"***\",\n    \"bairro\": \"***\",\n    \"cidade\": \"LAGARTO\",\n    \"numero\": null,\n    \"logradouro\": \"***\",\n    \"complemento\": null\n  },\n  \"historico\": [\n    {\n      \"numeroCrf\": \"2026030614210728510358\",\n      \"dataEmissao\": \"06/03/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"04/04/2026 00:00:00\",\n        \"inicio\": \"06/03/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026021501360728510357\",\n      \"dataEmissao\": \"15/02/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"16/03/2026 00:00:00\",\n        \"inicio\": \"15/02/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026012622290728510351\",\n      \"dataEmissao\": \"26/01/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"24/02/2026 00:00:00\",\n        \"inicio\": \"26/01/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026010705090728510362\",\n      \"dataEmissao\": \"07/01/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"05/02/2026 00:00:00\",\n        \"inicio\": \"07/01/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025121906520728510302\",\n      \"dataEmissao\": \"19/12/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/01/2026 00:00:00\",\n        \"inicio\": \"19/12/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025113004290728510371\",\n      \"dataEmissao\": \"30/11/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/12/2025 00:00:00\",\n        \"inicio\": \"30/11/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025111106080728510346\",\n      \"dataEmissao\": \"11/11/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/12/2025 00:00:00\",\n        \"inicio\": \"11/11/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025102309250728510333\",\n      \"dataEmissao\": \"23/10/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/11/2025 00:00:00\",\n        \"inicio\": \"23/10/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025100421020728510316\",\n      \"dataEmissao\": \"04/10/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/11/2025 00:00:00\",\n        \"inicio\": \"04/10/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025091207190728510302\",\n      \"dataEmissao\": \"12/09/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"11/10/2025 00:00:00\",\n        \"inicio\": \"12/09/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025082304280728510369\",\n      \"dataEmissao\": \"23/08/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/09/2025 00:00:00\",\n        \"inicio\": \"23/08/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025080410160728510300\",\n      \"dataEmissao\": \"04/08/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/09/2025 00:00:00\",\n        \"inicio\": \"04/08/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025071510430728510328\",\n      \"dataEmissao\": \"15/07/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"13/08/2025 00:00:00\",\n        \"inicio\": \"15/07/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025062609110728510315\",\n      \"dataEmissao\": \"26/06/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"25/07/2025 00:00:00\",\n        \"inicio\": \"26/06/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025060704290728510302\",\n      \"dataEmissao\": \"07/06/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"06/07/2025 00:00:00\",\n        \"inicio\": \"07/06/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025051913000728510301\",\n      \"dataEmissao\": \"19/05/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/06/2025 00:00:00\",\n        \"inicio\": \"19/05/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025043022100728510308\",\n      \"dataEmissao\": \"30/04/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/05/2025 00:00:00\",\n        \"inicio\": \"30/04/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025041112240728510323\",\n      \"dataEmissao\": \"11/04/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/05/2025 00:00:00\",\n        \"inicio\": \"11/04/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025032303500728510322\",\n      \"dataEmissao\": \"23/03/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/04/2025 00:00:00\",\n        \"inicio\": \"23/03/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025030403490728510362\",\n      \"dataEmissao\": \"04/03/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/04/2025 00:00:00\",\n        \"inicio\": \"04/03/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025021322210728510370\",\n      \"dataEmissao\": \"13/02/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"14/03/2025 00:00:00\",\n        \"inicio\": \"13/02/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025012505300728510340\",\n      \"dataEmissao\": \"25/01/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"23/02/2025 00:00:00\",\n        \"inicio\": \"25/01/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025010605470728510362\",\n      \"dataEmissao\": \"06/01/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"04/02/2025 00:00:00\",\n        \"inicio\": \"06/01/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024121804550728510302\",\n      \"dataEmissao\": \"18/12/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"16/01/2025 00:00:00\",\n        \"inicio\": \"18/12/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024112905100728510319\",\n      \"dataEmissao\": \"29/11/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"28/12/2024 00:00:00\",\n        \"inicio\": \"29/11/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024111004050728510342\",\n      \"dataEmissao\": \"10/11/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"09/12/2024 00:00:00\",\n        \"inicio\": \"10/11/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024102221350728510385\",\n      \"dataEmissao\": \"22/10/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"20/11/2024 00:00:00\",\n        \"inicio\": \"22/10/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024100321340728510378\",\n      \"dataEmissao\": \"03/10/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"01/11/2024 00:00:00\",\n        \"inicio\": \"03/10/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024091404130728510337\",\n      \"dataEmissao\": \"14/09/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"13/10/2024 00:00:00\",\n        \"inicio\": \"14/09/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024082622080728510350\",\n      \"dataEmissao\": \"26/08/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"24/09/2024 00:00:00\",\n        \"inicio\": \"26/08/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024080706590728510317\",\n      \"dataEmissao\": \"07/08/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"05/09/2024 00:00:00\",\n        \"inicio\": \"07/08/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024071921430728510341\",\n      \"dataEmissao\": \"19/07/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/08/2024 00:00:00\",\n        \"inicio\": \"19/07/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024063003120728510305\",\n      \"dataEmissao\": \"30/06/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/07/2024 00:00:00\",\n        \"inicio\": \"30/06/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024061106340728510374\",\n      \"dataEmissao\": \"11/06/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/07/2024 00:00:00\",\n        \"inicio\": \"11/06/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024052321310728510313\",\n      \"dataEmissao\": \"23/05/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/06/2024 00:00:00\",\n        \"inicio\": \"23/05/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024050403395926783803\",\n      \"dataEmissao\": \"04/05/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/06/2024 00:00:00\",\n        \"inicio\": \"04/05/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024041521205250645308\",\n      \"dataEmissao\": \"15/04/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"14/05/2024 00:00:00\",\n        \"inicio\": \"15/04/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024032721011111111111\",\n      \"dataEmissao\": \"27/03/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"25/04/2024 00:00:00\",\n        \"inicio\": \"27/03/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"31/03/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"30/04/2001 00:00:00\",\n        \"inicio\": \"31/03/2001 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"28/02/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"31/03/2001 00:00:00\",\n        \"inicio\": \"28/02/2001 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"31/01/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"28/02/2001 00:00:00\",\n        \"inicio\": \"31/01/2001 00:00:00\"\n      }\n    }\n  ],\n  \"inscricao\": \"22.222.222/0001-22\",\n  \"dataEmissao\": \"19/03/2026 21:13:12\",\n  \"razaoSocial\": \"***\",\n  \"nomeFantasia\": null,\n  \"periodoValidade\": {\n    \"fim\": \"04/04/2026 00:00:00\",\n    \"inicio\": \"06/03/2026 00:00:00\"\n  },\n  \"numeroCertificado\": \"2026030614210728510358\",\n  \"possuiIrregularidade\": false\n}"
+              "body": "{\n  \"status\": \"A empresa está regular perante o Fundo de Garantia do Tempo de Serviço - FGTS.\",\n  \"endereco\": {\n    \"uf\": \"SE\",\n    \"cep\": \"***\",\n    \"bairro\": \"***\",\n    \"cidade\": \"LAGARTO\",\n    \"numero\": null,\n    \"logradouro\": \"***\",\n    \"complemento\": null\n  },\n  \"historico\": [\n    {\n      \"numeroCrf\": \"2026030614210728510358\",\n      \"dataEmissao\": \"06/03/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"04/04/2026 00:00:00\",\n        \"inicio\": \"06/03/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026021501360728510357\",\n      \"dataEmissao\": \"15/02/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"16/03/2026 00:00:00\",\n        \"inicio\": \"15/02/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026012622290728510351\",\n      \"dataEmissao\": \"26/01/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"24/02/2026 00:00:00\",\n        \"inicio\": \"26/01/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2026010705090728510362\",\n      \"dataEmissao\": \"07/01/2026 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"05/02/2026 00:00:00\",\n        \"inicio\": \"07/01/2026 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025121906520728510302\",\n      \"dataEmissao\": \"19/12/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/01/2026 00:00:00\",\n        \"inicio\": \"19/12/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025113004290728510371\",\n      \"dataEmissao\": \"30/11/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/12/2025 00:00:00\",\n        \"inicio\": \"30/11/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025111106080728510346\",\n      \"dataEmissao\": \"11/11/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/12/2025 00:00:00\",\n        \"inicio\": \"11/11/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025102309250728510333\",\n      \"dataEmissao\": \"23/10/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/11/2025 00:00:00\",\n        \"inicio\": \"23/10/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025100421020728510316\",\n      \"dataEmissao\": \"04/10/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/11/2025 00:00:00\",\n        \"inicio\": \"04/10/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025091207190728510302\",\n      \"dataEmissao\": \"12/09/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"11/10/2025 00:00:00\",\n        \"inicio\": \"12/09/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025082304280728510369\",\n      \"dataEmissao\": \"23/08/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/09/2025 00:00:00\",\n        \"inicio\": \"23/08/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025080410160728510300\",\n      \"dataEmissao\": \"04/08/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/09/2025 00:00:00\",\n        \"inicio\": \"04/08/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025071510430728510328\",\n      \"dataEmissao\": \"15/07/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"13/08/2025 00:00:00\",\n        \"inicio\": \"15/07/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025062609110728510315\",\n      \"dataEmissao\": \"26/06/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"25/07/2025 00:00:00\",\n        \"inicio\": \"26/06/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025060704290728510302\",\n      \"dataEmissao\": \"07/06/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"06/07/2025 00:00:00\",\n        \"inicio\": \"07/06/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025051913000728510301\",\n      \"dataEmissao\": \"19/05/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/06/2025 00:00:00\",\n        \"inicio\": \"19/05/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025043022100728510308\",\n      \"dataEmissao\": \"30/04/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/05/2025 00:00:00\",\n        \"inicio\": \"30/04/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025041112240728510323\",\n      \"dataEmissao\": \"11/04/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/05/2025 00:00:00\",\n        \"inicio\": \"11/04/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025032303500728510322\",\n      \"dataEmissao\": \"23/03/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/04/2025 00:00:00\",\n        \"inicio\": \"23/03/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025030403490728510362\",\n      \"dataEmissao\": \"04/03/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/04/2025 00:00:00\",\n        \"inicio\": \"04/03/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025021322210728510370\",\n      \"dataEmissao\": \"13/02/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"14/03/2025 00:00:00\",\n        \"inicio\": \"13/02/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025012505300728510340\",\n      \"dataEmissao\": \"25/01/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"23/02/2025 00:00:00\",\n        \"inicio\": \"25/01/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2025010605470728510362\",\n      \"dataEmissao\": \"06/01/2025 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"04/02/2025 00:00:00\",\n        \"inicio\": \"06/01/2025 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024121804550728510302\",\n      \"dataEmissao\": \"18/12/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"16/01/2025 00:00:00\",\n        \"inicio\": \"18/12/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024112905100728510319\",\n      \"dataEmissao\": \"29/11/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"28/12/2024 00:00:00\",\n        \"inicio\": \"29/11/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024111004050728510342\",\n      \"dataEmissao\": \"10/11/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"09/12/2024 00:00:00\",\n        \"inicio\": \"10/11/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024102221350728510385\",\n      \"dataEmissao\": \"22/10/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"20/11/2024 00:00:00\",\n        \"inicio\": \"22/10/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024100321340728510378\",\n      \"dataEmissao\": \"03/10/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"01/11/2024 00:00:00\",\n        \"inicio\": \"03/10/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024091404130728510337\",\n      \"dataEmissao\": \"14/09/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"13/10/2024 00:00:00\",\n        \"inicio\": \"14/09/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024082622080728510350\",\n      \"dataEmissao\": \"26/08/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"24/09/2024 00:00:00\",\n        \"inicio\": \"26/08/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024080706590728510317\",\n      \"dataEmissao\": \"07/08/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"05/09/2024 00:00:00\",\n        \"inicio\": \"07/08/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024071921430728510341\",\n      \"dataEmissao\": \"19/07/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"17/08/2024 00:00:00\",\n        \"inicio\": \"19/07/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024063003120728510305\",\n      \"dataEmissao\": \"30/06/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"29/07/2024 00:00:00\",\n        \"inicio\": \"30/06/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024061106340728510374\",\n      \"dataEmissao\": \"11/06/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"10/07/2024 00:00:00\",\n        \"inicio\": \"11/06/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024052321310728510313\",\n      \"dataEmissao\": \"23/05/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"21/06/2024 00:00:00\",\n        \"inicio\": \"23/05/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024050403395926783803\",\n      \"dataEmissao\": \"04/05/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"02/06/2024 00:00:00\",\n        \"inicio\": \"04/05/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024041521205250645308\",\n      \"dataEmissao\": \"15/04/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"14/05/2024 00:00:00\",\n        \"inicio\": \"15/04/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": \"2024032721011111111111\",\n      \"dataEmissao\": \"27/03/2024 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"25/04/2024 00:00:00\",\n        \"inicio\": \"27/03/2024 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"31/03/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"30/04/2001 00:00:00\",\n        \"inicio\": \"31/03/2001 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"28/02/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"31/03/2001 00:00:00\",\n        \"inicio\": \"28/02/2001 00:00:00\"\n      }\n    },\n    {\n      \"numeroCrf\": null,\n      \"dataEmissao\": \"31/01/2001 00:00:00\",\n      \"periodoValidade\": {\n        \"fim\": \"28/02/2001 00:00:00\",\n        \"inicio\": \"31/01/2001 00:00:00\"\n      }\n    }\n  ],\n  \"inscricao\": \"22.222.222/0001-22\",\n  \"dataEmissao\": \"19/03/2026 21:13:12\",\n  \"razaoSocial\": \"***\",\n  \"nomeFantasia\": null,\n  \"periodoValidade\": {\n    \"fim\": \"04/04/2026 00:00:00\",\n    \"inicio\": \"06/03/2026 00:00:00\"\n  },\n  \"numeroCertificado\": \"2026030614210728510358\",\n  \"possuiIrregularidade\": false,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },

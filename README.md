@@ -1,10 +1,10 @@
 # Dabra - API Examples
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![133 consultas](https://img.shields.io/badge/consultas-133-blue)](https://dabradata.com/docs)
+[![132 consultas](https://img.shields.io/badge/consultas-132-blue)](https://dabradata.com/docs)
 [![Docs](https://img.shields.io/badge/docs-dabradata.com-teal)](https://dabradata.com/docs)
 
-Exemplos de integracao com a [API da Dabra](https://dabradata.com): 133 consultas de dados
+Exemplos de integracao com a [API da Dabra](https://dabradata.com): 132 consultas de dados
 brasileiros (CNPJ, CPF, KYC, compliance, processos judiciais, credito, sancoes internacionais)
 e envio de SMS/OTP, por uma API REST pre-paga, com uma unica chave.
 
@@ -82,8 +82,33 @@ header `X-Request-Cost`; os precos atuais estao em [dabradata.com/pricing](https
 | Background check de candidato | R$ 4,75 | `background_check.py` | - | - | - | - |
 | Compliance de fornecedores (CSV) | R$ 2,59 por CNPJ | `compliance_fornecedor.py` | - | - | - | - |
 | Sancoes internacionais | R$ 3,31 por nome | - | - | - | - | `sancoes.sh` |
+| Consulta com comprovante (CNDT) | R$ 0,54 + 25% so com o link | `comprovante.py` | `comprovante.js` | `comprovante.php` | `comprovante.go` | `comprovante.sh` |
 | Enviar SMS e OTP | R$ 0,29 por credito | - | - | - | - | `sms.sh` |
 | Receber webhook (verificar assinatura) | gratis | `webhook_assinatura.py` | - | - | - | - |
+
+## Comprovante da consulta
+
+Consultas com certidao (por exemplo `tst-cndt`, `ccd-pj`, `fgts-regularidade`) podem devolver o
+documento emitido pela fonte. Peca com `comprovante=1` (na querystring, ou no corpo nas `POST`):
+
+```bash
+curl -s -H "X-API-Key: $DABRA_API_KEY"   "https://app.dabradata.com/api/v1/consulta/tst-cndt?cnpj=00000000000191&comprovante=1"
+```
+
+A resposta traz `"comprovante": ["https://arquivos.dabradata.com/comprovantes/cpv_..."]`.
+
+- O link e aberto (nao leva `X-API-Key`) e vale **7 dias**.
+- `202`: o arquivo ainda esta sendo preparado; tente de novo em instantes (respeite `Retry-After`).
+- `410`: o prazo acabou ou o arquivo nao esta mais disponivel; faca uma nova consulta.
+- Acrescimo de **25%** sobre o preco da consulta, cobrado somente quando o link vem na resposta
+  (o custo final fica em `X-Request-Cost`). Sem `comprovante=1`, nada muda.
+- Com a chave de teste a resposta e o exemplo, sem custo, e o link e ficticio.
+
+Exemplos que consultam e baixam `comprovante[0]`, com espera no `202` e erro claro no `410`:
+[`curl/comprovante.sh`](./curl/comprovante.sh), [`python/comprovante.py`](./python/comprovante.py),
+[`nodejs/comprovante.js`](./nodejs/comprovante.js), [`php/comprovante.php`](./php/comprovante.php) e
+[`go/comprovante.go`](./go/comprovante.go). Documentacao:
+[dabradata.com/docs/comprovante](https://dabradata.com/docs/comprovante).
 
 ## Headers de resposta
 

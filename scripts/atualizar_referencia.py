@@ -115,6 +115,27 @@ def _request(ep: dict) -> dict:
     return item
 
 
+def _item_comprovante(catalogo: dict):
+    """Item de destaque: tst-cndt pedindo comprovante=1."""
+    ep = next((e for e in catalogo["endpoints"] if e["slug"] == "tst-cndt"), None)
+    if not ep:
+        return None
+    item = _request(ep)
+    url = item["request"]["url"]
+    url["query"] = [q for q in url["query"] if q["key"] != "comprovante"]
+    url["query"].append({"key": "comprovante", "value": "1", "disabled": False,
+                         "description": "Pede o comprovante da consulta (link valido por 7 dias)."})
+    url["raw"] += ("&" if "?" in url["raw"] else "?") + "comprovante=1"
+    item["name"] = "Consulta com comprovante (tst-cndt, comprovante=1)"
+    item["request"]["description"] += (
+        "\n\nCom comprovante=1 a resposta traz comprovante: [link]. O link e aberto (sem chave), "
+        "vale 7 dias; 202 = ainda sendo preparado, 410 = vencido. Acrescimo de 25% sobre o preco, "
+        "cobrado so quando o link vem. Guia: https://dabradata.com/docs/comprovante"
+    )
+    item.pop("response", None)
+    return item
+
+
 def gerar_postman(catalogo: dict, hoje: str) -> None:
     rotulos = {c["chave"]: c["rotulo"] for c in catalogo["categorias_ordenadas"]}
     ordem = [c["chave"] for c in catalogo["categorias_ordenadas"]]
@@ -143,6 +164,9 @@ def gerar_postman(catalogo: dict, hoje: str) -> None:
         "variable": [{"key": k, "value": v} for k, v in VARIAVEIS.items()],
         "item": [{"name": rotulos.get(k, k), "item": pastas[k]} for k in chaves if k in pastas],
     }
+    destaque = _item_comprovante(catalogo)
+    if destaque:
+        colecao["item"].insert(0, {"name": "Comprovante da consulta", "item": [destaque]})
     (RAIZ / "Dabra.postman_collection.json").write_text(
         json.dumps(colecao, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
