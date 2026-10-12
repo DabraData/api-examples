@@ -6,7 +6,8 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "cnpj": "node cnpj.js",
-    "kyc": "node kyc_pf.js"
+    "kyc": "node kyc_pf.js",
+    "comprovante": "node comprovante.js"
   },
   "keywords": ["dabra", "cnpj", "cpf", "kyc", "brazil", "api"],
   "license": "MIT"
