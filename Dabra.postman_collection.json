@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Dabra API",
-    "description": "132 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-10-11.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
+    "description": "134 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-10-23.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {
@@ -354,7 +354,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"receita\": {\n    \"anoObito\": null,\n    \"numeroCPF\": \"string\",\n    \"nomeSocial\": null,\n    \"dataEmissao\": \"string\",\n    \"possuiObito\": \"boolean\",\n    \"dataInscricao\": \"string\",\n    \"dataNascimento\": \"string\",\n    \"link_validacao\": \"string\",\n    \"nomePessoaFisica\": \"string\",\n    \"digitoVerificador\": \"string\",\n    \"situacaoCadastral\": \"string\",\n    \"codigoControleComprovante\": \"string\",\n    \"dataInscricaoAnterior1990\": null\n  },\n  \"cadastro\": {\n    \"cpf\": \"string\",\n    \"nome\": \"string\",\n    \"sexo\": \"string\",\n    \"idade\": \"number\",\n    \"signo\": \"string\",\n    \"emails\": [\n      {\n        \"enderecoEmail\": \"string\"\n      }\n    ],\n    \"nomeMae\": \"string\",\n    \"enderecos\": [\n      {\n        \"uf\": \"string\",\n        \"cep\": \"string\",\n        \"bairro\": \"string\",\n        \"cidade\": \"string\",\n        \"numero\": \"string\",\n        \"logradouro\": \"string\",\n        \"complemento\": \"string\"\n      }\n    ],\n    \"telefones\": [\n      {\n        \"whatsApp\": \"boolean\",\n        \"operadora\": \"string\",\n        \"tipoTelefone\": \"string\",\n        \"telefoneComDDD\": \"string\",\n        \"telemarketingBloqueado\": \"boolean\"\n      }\n    ],\n    \"rendaEstimada\": \"string\",\n    \"dataNascimento\": \"string\",\n    \"rendaFaixaSalarial\": \"string\"\n  }\n}"
+              "body": "{\n  \"receita\": {\n    \"anoObito\": null,\n    \"numeroCPF\": \"string\",\n    \"nomeSocial\": null,\n    \"dataEmissao\": \"string\",\n    \"possuiObito\": \"boolean\",\n    \"dataInscricao\": \"string\",\n    \"dataNascimento\": \"string\",\n    \"link_validacao\": \"string\",\n    \"nomePessoaFisica\": \"string\",\n    \"digitoVerificador\": \"string\",\n    \"situacaoCadastral\": \"string\",\n    \"codigoControleComprovante\": \"string\",\n    \"dataInscricaoAnterior1990\": null\n  },\n  \"cadastro\": {\n    \"cpf\": \"string\",\n    \"nome\": \"string\",\n    \"sexo\": \"string\",\n    \"idade\": \"number\",\n    \"signo\": \"string\",\n    \"emails\": [\n      {\n        \"enderecoEmail\": \"string\"\n      }\n    ],\n    \"nomeMae\": \"string\",\n    \"enderecos\": [\n      {\n        \"uf\": \"string\",\n        \"cep\": \"string\",\n        \"bairro\": \"string\",\n        \"cidade\": \"string\",\n        \"numero\": \"string\",\n        \"logradouro\": \"string\",\n        \"complemento\": \"string\"\n      }\n    ],\n    \"telefones\": [\n      {\n        \"whatsApp\": \"boolean\",\n        \"operadora\": \"string\",\n        \"tipoTelefone\": \"string\",\n        \"telefoneComDDD\": \"string\",\n        \"telemarketingBloqueado\": \"boolean\"\n      }\n    ],\n    \"rendaEstimada\": \"string\",\n    \"dataNascimento\": \"string\",\n    \"rendaFaixaSalarial\": \"string\"\n  },\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -2496,7 +2496,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"uf\": \"string\",\n  \"advogados\": [\n    {\n      \"uf\": \"string\",\n      \"foto\": \"string\",\n      \"nome\": \"string\",\n      \"endereco\": null,\n      \"situacao\": \"string\",\n      \"telefone\": \"string\",\n      \"inscricao\": \"string\",\n      \"nomeSocial\": null,\n      \"organizacao\": \"string\",\n      \"tipoInscricao\": \"string\"\n    }\n  ],\n  \"inscricao\": \"string\",\n  \"observacoes\": \"string\",\n  \"nomePesquisado\": null,\n  \"possuiRegistros\": \"boolean\"\n}"
+              "body": "{\n  \"uf\": \"string\",\n  \"advogados\": [\n    {\n      \"uf\": \"string\",\n      \"foto\": \"string\",\n      \"nome\": \"string\",\n      \"endereco\": null,\n      \"situacao\": \"string\",\n      \"telefone\": \"string\",\n      \"inscricao\": \"string\",\n      \"nomeSocial\": null,\n      \"organizacao\": \"string\",\n      \"tipoInscricao\": \"string\"\n    }\n  ],\n  \"inscricao\": \"string\",\n  \"observacoes\": \"string\",\n  \"nomePesquisado\": null,\n  \"possuiRegistros\": \"boolean\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -4475,7 +4475,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"cnpj\": \"string\",\n  \"situacaoSIMEI\": \"string\",\n  \"enquadradoSIMEI\": \"boolean\",\n  \"nomeEmpresarial\": \"string\",\n  \"eventosFuturosSIMEI\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"optanteSimplesNacional\": \"boolean\",\n  \"simeiPeriodosAnteriores\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"situacaoSimplesNacional\": \"string\",\n  \"meiTransportadorAutonomo\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"eventosFuturosSimplesNacional\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"simplesNacionalPeriodosAnteriores\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": \"string\",\n      \"detalhamento\": \"string\"\n    }\n  ]\n}"
+              "body": "{\n  \"cnpj\": \"string\",\n  \"situacaoSIMEI\": \"string\",\n  \"enquadradoSIMEI\": \"boolean\",\n  \"nomeEmpresarial\": \"string\",\n  \"eventosFuturosSIMEI\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"optanteSimplesNacional\": \"boolean\",\n  \"simeiPeriodosAnteriores\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"situacaoSimplesNacional\": \"string\",\n  \"meiTransportadorAutonomo\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"situacaoRegimeRegularCBS\": \"string\",\n  \"situacaoRegimeRegularIBS\": \"string\",\n  \"eventosFuturosSimplesNacional\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": null,\n      \"detalhamento\": \"string\"\n    }\n  ],\n  \"simplesNacionalPeriodosAnteriores\": [\n    {\n      \"dataFim\": null,\n      \"dataInicio\": \"string\",\n      \"detalhamento\": \"string\"\n    }\n  ]\n}"
             }
           ]
         }
@@ -4586,7 +4586,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"apto\": \"boolean\",\n  \"rntrc\": \"number\",\n  \"status\": \"string\",\n  \"situacao\": \"string\",\n  \"categoria\": \"string\",\n  \"documento\": \"string\",\n  \"protocolo\": \"string\",\n  \"observacao\": null,\n  \"dataEmissao\": \"string\",\n  \"localizacao\": {\n    \"uf\": \"string\",\n    \"municipio\": \"string\"\n  },\n  \"transportador\": \"string\"\n}"
+              "body": "{\n  \"apto\": \"boolean\",\n  \"rntrc\": \"number\",\n  \"status\": \"string\",\n  \"situacao\": \"string\",\n  \"categoria\": \"string\",\n  \"documento\": \"string\",\n  \"protocolo\": \"string\",\n  \"observacao\": null,\n  \"dataEmissao\": \"string\",\n  \"localizacao\": {\n    \"uf\": \"string\",\n    \"municipio\": \"string\"\n  },\n  \"transportador\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -4680,7 +4680,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"pendencias\": [],\n  \"totalPendencias\": \"number\",\n  \"codigoDeclaracao\": \"string\",\n  \"possuiPendencias\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"pendencias\": [],\n  \"totalPendencias\": \"number\",\n  \"codigoDeclaracao\": \"string\",\n  \"possuiPendencias\": \"boolean\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -4774,113 +4774,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"uf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"pendencias\": [],\n  \"valorTotal\": null,\n  \"dataValidade\": null,\n  \"numeroCertidao\": null,\n  \"totalPendencias\": \"number\",\n  \"codigoDeclaracao\": null,\n  \"possuiPendencias\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "CADIN Estadual — BA, GO, MG, MT, PA, PR, RN e RS (cadin-federal)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "description": "[LEGADO — prefira o cadin-estadual, que unifica todos os estados, inclusive SP] CADIN Estadual (Secretarias da Fazenda) — atende BA, GO, MG, MT, PA, PR, RN e RS. São Paulo NÃO é atendido aqui: use cadin-estadual (ou cadin-sp).\n\nPreco: R$ 0,51 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/cadin-federal",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/consulta/cadin-federal?cnpj={{CNPJ}}&uf=SP",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "consulta",
-                "cadin-federal"
-              ],
-              "query": [
-                {
-                  "key": "cpf",
-                  "value": "{{CPF}}",
-                  "disabled": true,
-                  "description": "CPF (somente números, 11 dígitos)"
-                },
-                {
-                  "key": "cnpj",
-                  "value": "{{CNPJ}}",
-                  "disabled": false,
-                  "description": "CNPJ (somente números, 14 dígitos)"
-                },
-                {
-                  "key": "uf",
-                  "value": "SP",
-                  "disabled": false,
-                  "description": "Estados atendidos: BA, GO, MG, MT, PA, PR, RN, RS. Para São Paulo, selecione CADIN — São Paulo (cadin-sp)."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "Exemplo (chave de teste, X-Example: true)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "description": "[LEGADO — prefira o cadin-estadual, que unifica todos os estados, inclusive SP] CADIN Estadual (Secretarias da Fazenda) — atende BA, GO, MG, MT, PA, PR, RN e RS. São Paulo NÃO é atendido aqui: use cadin-estadual (ou cadin-sp).\n\nPreco: R$ 0,51 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/cadin-federal",
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/consulta/cadin-federal?cnpj={{CNPJ}}&uf=SP",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "consulta",
-                    "cadin-federal"
-                  ],
-                  "query": [
-                    {
-                      "key": "cpf",
-                      "value": "{{CPF}}",
-                      "disabled": true,
-                      "description": "CPF (somente números, 11 dígitos)"
-                    },
-                    {
-                      "key": "cnpj",
-                      "value": "{{CNPJ}}",
-                      "disabled": false,
-                      "description": "CNPJ (somente números, 14 dígitos)"
-                    },
-                    {
-                      "key": "uf",
-                      "value": "SP",
-                      "disabled": false,
-                      "description": "Estados atendidos: BA, GO, MG, MT, PA, PR, RN, RS. Para São Paulo, selecione CADIN — São Paulo (cadin-sp)."
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "X-Example",
-                  "value": "true"
-                }
-              ],
-              "body": "{\n  \"uf\": \"string\",\n  \"nome\": null,\n  \"status\": \"string\",\n  \"pendencias\": [],\n  \"valorTotal\": null,\n  \"dataValidade\": null,\n  \"numeroCertidao\": null,\n  \"totalPendencias\": null,\n  \"codigoDeclaracao\": null,\n  \"possuiPendencias\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"uf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"pendencias\": [],\n  \"valorTotal\": null,\n  \"dataValidade\": null,\n  \"numeroCertidao\": null,\n  \"totalPendencias\": \"number\",\n  \"codigoDeclaracao\": null,\n  \"possuiPendencias\": \"boolean\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -4988,7 +4882,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Verifica se uma pessoa física ou jurídica possui débitos federais registrados, retornando detalhes sobre inscrições, valores, natureza e situação das dívidas.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/pgfn-devedores",
+            "description": "Verifica se uma pessoa física ou jurídica tem dívida em cobrança na Dívida Ativa (lista de devedores da PGFN): União, FGTS e convênios com estados, municípios e autarquias, com valor total e inscrições.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/pgfn-devedores",
             "url": {
               "raw": "{{baseUrl}}/api/v1/consulta/pgfn-devedores?cnpj={{CNPJ}}",
               "host": [
@@ -5027,7 +4921,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Verifica se uma pessoa física ou jurídica possui débitos federais registrados, retornando detalhes sobre inscrições, valores, natureza e situação das dívidas.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/pgfn-devedores",
+                "description": "Verifica se uma pessoa física ou jurídica tem dívida em cobrança na Dívida Ativa (lista de devedores da PGFN): União, FGTS e convênios com estados, municípios e autarquias, com valor total e inscrições.\n\nPreco: R$ 0,43 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/pgfn-devedores",
                 "url": {
                   "raw": "{{baseUrl}}/api/v1/consulta/pgfn-devedores?cnpj={{CNPJ}}",
                   "host": [
@@ -5068,7 +4962,89 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"uf\": null,\n  \"cnae\": null,\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"naturezas\": [],\n  \"tipoPessoa\": \"string\",\n  \"tipoDevedor\": null,\n  \"totalDivida\": null,\n  \"possuiDivida\": \"boolean\",\n  \"cnaeDescricao\": null,\n  \"nomeMunicipio\": null,\n  \"codigoMunicipio\": null,\n  \"totalTributario\": null,\n  \"unidadeResponsavel\": null,\n  \"documentoConsultado\": \"string\",\n  \"totalPrevidenciario\": null\n}"
+              "body": "{\n  \"uf\": null,\n  \"cnae\": null,\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"naturezas\": [],\n  \"tipoPessoa\": \"string\",\n  \"tipoDevedor\": null,\n  \"totalDivida\": null,\n  \"possuiDivida\": \"boolean\",\n  \"cnaeDescricao\": null,\n  \"nomeMunicipio\": null,\n  \"codigoMunicipio\": null,\n  \"totalTributario\": null,\n  \"unidadeResponsavel\": null,\n  \"documentoConsultado\": \"string\",\n  \"totalPrevidenciario\": null,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Histórico Fiscal da Empresa (historico-fiscal-pj)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Histórico da empresa inteira na dívida ativa da União desde 2020, trimestre a trimestre: o que deixou de constar, parcelamentos e rompimentos, ajuizamentos e a foto atual, com a data de cada publicação da PGFN.\n\nPreco: R$ 0,99 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/historico-fiscal-pj",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/historico-fiscal-pj?cnpj={{CNPJ}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "historico-fiscal-pj"
+              ],
+              "query": [
+                {
+                  "key": "cnpj",
+                  "value": "{{CNPJ}}",
+                  "disabled": false,
+                  "description": "CNPJ da empresa (matriz ou filial), com ou sem máscara. Aceita o CNPJ alfanumérico. A resposta cobre a empresa inteira (todos os estabelecimentos da mesma raiz)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemplo (chave de teste, X-Example: true)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "Histórico da empresa inteira na dívida ativa da União desde 2020, trimestre a trimestre: o que deixou de constar, parcelamentos e rompimentos, ajuizamentos e a foto atual, com a data de cada publicação da PGFN.\n\nPreco: R$ 0,99 por consulta.\nDocumentacao: https://dabradata.com/docs/fiscal/historico-fiscal-pj",
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/consulta/historico-fiscal-pj?cnpj={{CNPJ}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "consulta",
+                    "historico-fiscal-pj"
+                  ],
+                  "query": [
+                    {
+                      "key": "cnpj",
+                      "value": "{{CNPJ}}",
+                      "disabled": false,
+                      "description": "CNPJ da empresa (matriz ou filial), com ou sem máscara. Aceita o CNPJ alfanumérico. A resposta cobre a empresa inteira (todos os estabelecimentos da mesma raiz)."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Example",
+                  "value": "true"
+                }
+              ],
+              "body": "{\n  \"cnpj\": \"11222333000181\",\n  \"pgfn\": {\n    \"atual\": {\n      \"outras\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"garantida\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"negociada\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"subflags\": {\n          \"negociacao_bloqueada\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          }\n        },\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"em_cobranca\": {\n        \"qtd\": 2,\n        \"valor\": 5704.19,\n        \"subflags\": {\n          \"protesto\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"em_negociacao\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"discussao_judicial\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"falencia_concordata\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          },\n          \"parcelamento_rescindido\": {\n            \"qtd\": 0,\n            \"valor\": 0.0\n          }\n        },\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"beneficio_fiscal\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      },\n      \"suspensa_judicial\": {\n        \"qtd\": 0,\n        \"valor\": 0.0,\n        \"qtd_ajuizada\": 0,\n        \"valor_ajuizado\": 0.0\n      }\n    },\n    \"eventos\": [\n      {\n        \"cnpj\": \"11222333000181\",\n        \"desde\": \"2026-03-31\",\n        \"safra\": \"2026-06-30\",\n        \"evento\": \"rompeu_parcelamento\",\n        \"origem\": \"geral\",\n        \"ajuizada_antes\": false,\n        \"data_inscricao\": \"2024-10-07\",\n        \"situacao_antes\": \"negociada\",\n        \"valor_anterior\": 5210.88,\n        \"ajuizada_depois\": false,\n        \"situacao_depois\": \"em_cobranca\",\n        \"numero_inscricao\": \"0000000000000\"\n      },\n      {\n        \"cnpj\": \"11222333000181\",\n        \"desde\": \"2025-12-31\",\n        \"safra\": \"2026-03-31\",\n        \"evento\": \"parcelou\",\n        \"origem\": \"geral\",\n        \"ajuizada_antes\": false,\n        \"data_inscricao\": \"2024-10-07\",\n        \"situacao_antes\": \"em_cobranca\",\n        \"valor_anterior\": 5102.35,\n        \"ajuizada_depois\": false,\n        \"situacao_depois\": \"negociada\",\n        \"numero_inscricao\": \"0000000000000\"\n      },\n      {\n        \"cnpj\": \"11222333000181\",\n        \"desde\": \"2025-12-31\",\n        \"safra\": \"2026-03-31\",\n        \"evento\": \"deixou_de_constar\",\n        \"origem\": \"geral\",\n        \"ajuizada_antes\": false,\n        \"data_inscricao\": \"2025-12-08\",\n        \"situacao_antes\": \"em_cobranca\",\n        \"valor_anterior\": 118.4,\n        \"ajuizada_depois\": null,\n        \"situacao_depois\": null,\n        \"numero_inscricao\": \"0000000000000\"\n      }\n    ],\n    \"indicadores\": {\n      \"ja_deveu\": true,\n      \"parcelou\": true,\n      \"em_cobranca_hoje\": true,\n      \"deixou_de_constar\": true,\n      \"rompeu_parcelamento\": true,\n      \"nova_inscricao_apos_saida\": true\n    },\n    \"ajuizamentos\": {\n      \"ultima_em\": null,\n      \"inscricoes\": 0\n    },\n    \"eventos_total\": 3,\n    \"parcelamentos\": {\n      \"entradas\": {\n        \"ultima_em\": \"2026-03-31\",\n        \"inscricoes\": 1,\n        \"trimestres\": 1\n      },\n      \"rompimentos\": {\n        \"ultima_em\": \"2026-06-30\",\n        \"inscricoes\": 1,\n        \"trimestres\": 1\n      }\n    },\n    \"linha_do_tempo\": [\n      {\n        \"desde\": \"2026-03-31\",\n        \"safra\": \"2026-06-30\",\n        \"ajuizada\": 0,\n        \"parcelou\": 0,\n        \"mudou_situacao\": 0,\n        \"deixou_de_constar\": {\n          \"qtd\": 0,\n          \"valor\": 0.0\n        },\n        \"rompeu_parcelamento\": 1\n      },\n      {\n        \"desde\": \"2025-12-31\",\n        \"safra\": \"2026-03-31\",\n        \"ajuizada\": 0,\n        \"parcelou\": 1,\n        \"mudou_situacao\": 0,\n        \"deixou_de_constar\": {\n          \"qtd\": 1,\n          \"valor\": 118.4\n        },\n        \"rompeu_parcelamento\": 0\n      }\n    ],\n    \"deixou_de_constar\": {\n      \"ultima_em\": \"2026-03-31\",\n      \"inscricoes\": 1,\n      \"trimestres\": 1,\n      \"primeira_em\": \"2026-03-31\",\n      \"renumeradas\": 0,\n      \"valor_ultimo\": 118.4,\n      \"por_situacao_anterior\": {\n        \"garantida\": {\n          \"qtd\": 0,\n          \"valor\": 0.0\n        },\n        \"negociada\": {\n          \"qtd\": 0,\n          \"valor\": 0.0\n        },\n        \"em_cobranca\": {\n          \"qtd\": 1,\n          \"valor\": 118.4\n        },\n        \"suspensa_judicial\": {\n          \"qtd\": 0,\n          \"valor\": 0.0\n        }\n      }\n    },\n    \"eventos_truncados\": false\n  },\n  \"escopo\": \"raiz\",\n  \"fontes\": {\n    \"pgfn\": {\n      \"referencia\": \"2026_trimestre_02\",\n      \"atualizado_em\": \"2026-10-11\"\n    },\n    \"pgfn_historico\": {\n      \"desde\": \"2020-02-29\",\n      \"fotos\": 25,\n      \"referencia\": \"2026-06-30\",\n      \"atualizado_em\": \"2026-10-19\"\n    }\n  },\n  \"cnpj_raiz\": \"11222333\"\n}"
             }
           ]
         },
@@ -5582,7 +5558,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"cpf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"nomeMae\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"dataNascimento\": \"string\",\n  \"numeroCertidao\": \"string\",\n  \"possuiAntecedentesCriminais\": \"boolean\"\n}"
+              "body": "{\n  \"cpf\": \"string\",\n  \"nome\": \"string\",\n  \"status\": \"string\",\n  \"nomeMae\": \"string\",\n  \"protocolo\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"dataNascimento\": \"string\",\n  \"numeroCertidao\": \"string\",\n  \"certidaoEmitida\": \"boolean\",\n  \"possuiAntecedentesCriminais\": \"boolean\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -5897,7 +5873,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"processos\": [\n    {\n      \"partes\": [\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"RJ\",\n                \"numeroOAB\": \"168434\"\n              },\n              \"documento\": \"111.111.111-11\",\n              \"nomeCompleto\": \"RENATA OLIVEIRA PEREIRA DA SILVA\"\n            }\n          ],\n          \"documento\": \"11.111.111/0001-11\",\n          \"nomeCompleto\": \"TRANSPORTES EXEMPLO EIRELI\",\n          \"posicaoProcessual\": \"Executado\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"ES\",\n                \"numeroOAB\": \"18190\"\n              },\n              \"documento\": \"222.222.222-22\",\n              \"nomeCompleto\": \"BRUNO CESAR ALMEIDA SANTOS\"\n            }\n          ],\n          \"documento\": \"333.333.333-33\",\n          \"nomeCompleto\": \"MARCOS ANTONIO PEREIRA LIMA\",\n          \"posicaoProcessual\": \"Exequente\"\n        }\n      ],\n      \"sistema\": \"PJE-TJRJ\",\n      \"assuntos\": [\n        {\n          \"assunto\": \"Direito do Consumidor\",\n          \"codigoAssunto\": \"1156\",\n          \"assuntoPrincipal\": true\n        }\n      ],\n      \"instancia\": 1,\n      \"areaDireito\": \"Direito do Consumidor\",\n      \"prioritario\": false,\n      \"dataAutuacao\": \"17/02/2025 16:35:02\",\n      \"ambitoJustica\": \"Justiça Estadual\",\n      \"classificacao\": {\n        \"descricao\": \"Cumprimento de Sentença\",\n        \"codigoClassificacao\": \"156\"\n      },\n      \"orgaoJulgador\": {\n        \"uf\": \"RJ\",\n        \"cidade\": null,\n        \"comarca\": null,\n        \"tribunal\": \"TJ-RJ\",\n        \"unidadeOrigem\": \"Comarca da Capital - Regional da Barra da Tijuca\",\n        \"orgaoResponsavel\": \"3º Juizado Especial Cível da Regional da Barra da Tijuca\"\n      },\n      \"valorProcesso\": \"R$ 20.000,00\",\n      \"numeroProcesso\": \"19283745620258190455\",\n      \"segredoJustica\": false,\n      \"justicaGratuita\": false,\n      \"processoDigital\": true,\n      \"dataDistribuicao\": \"17/02/2025 00:00:00\",\n      \"tutelaAntecipada\": false,\n      \"processosRelacionados\": [],\n      \"detalhesStatusProcesso\": {\n        \"penhoras\": [],\n        \"julgamentos\": [\n          {\n            \"dataJulgamento\": \"30/06/2025 16:39:15\",\n            \"tipoJulgamento\": \"Acordo\",\n            \"statusJulgamento\": \"Homologacao de Acordo em Execução Ou em Cumprimento de Sentença\"\n          },\n          {\n            \"dataJulgamento\": \"14/07/2025 15:35:23\",\n            \"tipoJulgamento\": \"Improcedente\",\n            \"statusJulgamento\": \"Nao-Acolhimento de Embargos de Declaracao\"\n          },\n          {\n            \"dataJulgamento\": \"07/08/2025 20:04:16\",\n            \"tipoJulgamento\": \"Acordo\",\n            \"statusJulgamento\": \"Homologacao de Acordo em Execução Ou em Cumprimento de Sentença\"\n          },\n          {\n            \"dataJulgamento\": \"30/10/2025 16:37:53\",\n            \"tipoJulgamento\": \"Extinta\",\n            \"statusJulgamento\": \"Extincao da Execução Ou do Cumprimento da Sentença\"\n          }\n        ],\n        \"statusDetalhes\": \"em Tramitacao\",\n        \"dataArquivamento\": null,\n        \"dataTransitoJulgado\": null\n      }\n    },\n    {\n      \"partes\": [\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"555.555.555-55\",\n          \"nomeCompleto\": \"JULIANA CASTRO NOGUEIRA\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"666.666.666-66\",\n          \"nomeCompleto\": \"FELIPE HENRIQUE COSTA ARAUJO\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"333.333.333-33\",\n          \"nomeCompleto\": \"MARCOS ANTONIO PEREIRA LIMA\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"69461\"\n              },\n              \"documento\": \"777.777.777-77\",\n              \"nomeCompleto\": \"GABRIELA SOUZA MARTINS\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"69508\"\n              },\n              \"documento\": \"888.888.888-88\",\n              \"nomeCompleto\": \"THIAGO LIMA BARBOSA\"\n            }\n          ],\n          \"documento\": \"22.222.222/0001-22\",\n          \"nomeCompleto\": \"COMERCIO DE MATERIAIS DE CONSTRUCAO VALE VERDE LTDA\",\n          \"posicaoProcessual\": \"Réu\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"67342\"\n              },\n              \"documento\": \"999.999.999-99\",\n              \"nomeCompleto\": \"CAMILA RODRIGUES FREITAS\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"42337\"\n              },\n              \"documento\": \"000.000.000-00\",\n              \"nomeCompleto\": \"DIEGO ALVES MOREIRA\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"53795\"\n              },\n              \"documento\": \"121.212.121-21\",\n              \"nomeCompleto\": \"LARISSA PEREIRA GOMES\"\n            }\n          ],\n          \"documento\": \"33.333.333/0001-33\",\n          \"nomeCompleto\": \"INDUSTRIA E COMERCIO SANTA CLARA LTDA\",\n          \"posicaoProcessual\": \"Réu\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"56526\"\n              },\n              \"documento\": \"131.313.131-31\",\n              \"nomeCompleto\": \"RODRIGO TEIXEIRA CASTRO\"\n            }\n          ],\n          \"documento\": \"44.444.444/0001-44\",\n          \"nomeCompleto\": \"AGROPECUARIA EXEMPLO LTDA\",\n          \"posicaoProcessual\": \"Réu\"\n        }\n      ],\n      \"sistema\": \"TJMG\",\n      \"assuntos\": [\n        {\n          \"assunto\": \"Civil\",\n          \"codigoAssunto\": null,\n          \"assuntoPrincipal\": true\n        },\n        {\n          \"assunto\": \"Responsabilidade Civil\",\n          \"codigoAssunto\": \"10431\",\n          \"assuntoPrincipal\": false\n        },\n        {\n          \"assunto\": \"Dano Ambiental\",\n          \"codigoAssunto\": null,\n          \"assuntoPrincipal\": false\n        }\n      ],\n      \"instancia\": 1,\n      \"areaDireito\": \"Direito Civil\",\n      \"prioritario\": false,\n      \"dataAutuacao\": \"14/02/2017 00:00:00\",\n      \"ambitoJustica\": \"Justiça Estadual\",\n      \"classificacao\": {\n        \"descricao\": \"Procedimento do Juizado Especial Cível\",\n        \"codigoClassificacao\": \"436\"\n      },\n      \"orgaoJulgador\": {\n        \"uf\": \"MG\",\n        \"cidade\": null,\n        \"comarca\": null,\n        \"tribunal\": \"TJ-MG\",\n        \"unidadeOrigem\": \"Governador Valadares\",\n        \"orgaoResponsavel\": \"Uj - 2º Jd Cível\"\n      },\n      \"valorProcesso\": \"R$ 30.000,00\",\n      \"numeroProcesso\": \"28374653120178130892\",\n      \"segredoJustica\": false,\n      \"justicaGratuita\": false,\n      \"processoDigital\": false,\n      \"dataDistribuicao\": \"14/02/2017 00:00:00\",\n      \"tutelaAntecipada\": false,\n      \"processosRelacionados\": [],\n      \"detalhesStatusProcesso\": {\n        \"penhoras\": [],\n        \"julgamentos\": [\n          {\n            \"dataJulgamento\": \"04/07/2018 00:00:00\",\n            \"tipoJulgamento\": \"Extinta\",\n            \"statusJulgamento\": \"Extincao por Desistencia\"\n          }\n        ],\n        \"statusDetalhes\": \"Arquivamento Definitivo\",\n        \"dataArquivamento\": \"18/06/2021 00:00:00\",\n        \"dataTransitoJulgado\": \"23/07/2018 00:00:00\"\n      }\n    }\n  ],\n  \"observacoes\": \"A entidade possui vários processos, inclusive como réu.\",\n  \"totalProcessos\": 2,\n  \"documentoConsultado\": \"333.333.333-33\"\n}"
+              "body": "{\n  \"processos\": [\n    {\n      \"partes\": [\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"RJ\",\n                \"numeroOAB\": \"168434\"\n              },\n              \"documento\": \"111.111.111-11\",\n              \"nomeCompleto\": \"RENATA OLIVEIRA PEREIRA DA SILVA\"\n            }\n          ],\n          \"documento\": \"11.111.111/0001-11\",\n          \"nomeCompleto\": \"TRANSPORTES EXEMPLO EIRELI\",\n          \"vinculoDocumento\": \"OFICIAL\",\n          \"posicaoProcessual\": \"Executado\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"ES\",\n                \"numeroOAB\": \"18190\"\n              },\n              \"documento\": \"222.222.222-22\",\n              \"nomeCompleto\": \"BRUNO CESAR ALMEIDA SANTOS\"\n            }\n          ],\n          \"documento\": \"333.333.333-33\",\n          \"nomeCompleto\": \"MARCOS ANTONIO PEREIRA LIMA\",\n          \"vinculoDocumento\": \"INFERIDO\",\n          \"posicaoProcessual\": \"Exequente\"\n        }\n      ],\n      \"sistema\": \"PJE-TJRJ\",\n      \"assuntos\": [\n        {\n          \"assunto\": \"Direito do Consumidor\",\n          \"codigoAssunto\": \"1156\",\n          \"assuntoPrincipal\": true\n        }\n      ],\n      \"instancia\": 1,\n      \"areaDireito\": \"Direito do Consumidor\",\n      \"prioritario\": false,\n      \"dataAutuacao\": \"17/02/2025 16:35:02\",\n      \"ambitoJustica\": \"Justiça Estadual\",\n      \"classificacao\": {\n        \"descricao\": \"Cumprimento de Sentença\",\n        \"codigoClassificacao\": \"156\"\n      },\n      \"orgaoJulgador\": {\n        \"uf\": \"RJ\",\n        \"cidade\": null,\n        \"comarca\": null,\n        \"tribunal\": \"TJ-RJ\",\n        \"unidadeOrigem\": \"Comarca da Capital - Regional da Barra da Tijuca\",\n        \"orgaoResponsavel\": \"3º Juizado Especial Cível da Regional da Barra da Tijuca\"\n      },\n      \"valorProcesso\": \"R$ 20.000,00\",\n      \"numeroProcesso\": \"19283745620258190455\",\n      \"segredoJustica\": false,\n      \"justicaGratuita\": false,\n      \"processoDigital\": true,\n      \"dataDistribuicao\": \"17/02/2025 00:00:00\",\n      \"tutelaAntecipada\": false,\n      \"processosRelacionados\": [],\n      \"detalhesStatusProcesso\": {\n        \"penhoras\": [],\n        \"julgamentos\": [\n          {\n            \"dataJulgamento\": \"30/06/2025 16:39:15\",\n            \"tipoJulgamento\": \"Acordo\",\n            \"statusJulgamento\": \"Homologacao de Acordo em Execução Ou em Cumprimento de Sentença\"\n          },\n          {\n            \"dataJulgamento\": \"14/07/2025 15:35:23\",\n            \"tipoJulgamento\": \"Improcedente\",\n            \"statusJulgamento\": \"Nao-Acolhimento de Embargos de Declaracao\"\n          },\n          {\n            \"dataJulgamento\": \"07/08/2025 20:04:16\",\n            \"tipoJulgamento\": \"Acordo\",\n            \"statusJulgamento\": \"Homologacao de Acordo em Execução Ou em Cumprimento de Sentença\"\n          },\n          {\n            \"dataJulgamento\": \"30/10/2025 16:37:53\",\n            \"tipoJulgamento\": \"Extinta\",\n            \"statusJulgamento\": \"Extincao da Execução Ou do Cumprimento da Sentença\"\n          }\n        ],\n        \"statusDetalhes\": \"em Tramitacao\",\n        \"dataArquivamento\": null,\n        \"dataTransitoJulgado\": null\n      }\n    },\n    {\n      \"partes\": [\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"555.555.555-55\",\n          \"nomeCompleto\": \"JULIANA CASTRO NOGUEIRA\",\n          \"vinculoDocumento\": \"OFICIAL\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"666.666.666-66\",\n          \"nomeCompleto\": \"FELIPE HENRIQUE COSTA ARAUJO\",\n          \"vinculoDocumento\": \"INFERIDO\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Ativo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"23202\"\n              },\n              \"documento\": \"444.444.444-44\",\n              \"nomeCompleto\": \"PAULO ROBERTO FERNANDES SILVA\"\n            }\n          ],\n          \"documento\": \"333.333.333-33\",\n          \"nomeCompleto\": \"MARCOS ANTONIO PEREIRA LIMA\",\n          \"vinculoDocumento\": \"AUTOS\",\n          \"posicaoProcessual\": \"Autor\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"69461\"\n              },\n              \"documento\": \"777.777.777-77\",\n              \"nomeCompleto\": \"GABRIELA SOUZA MARTINS\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"69508\"\n              },\n              \"documento\": \"888.888.888-88\",\n              \"nomeCompleto\": \"THIAGO LIMA BARBOSA\"\n            }\n          ],\n          \"documento\": \"22.222.222/0001-22\",\n          \"nomeCompleto\": \"COMERCIO DE MATERIAIS DE CONSTRUCAO VALE VERDE LTDA\",\n          \"vinculoDocumento\": \"OFICIAL\",\n          \"posicaoProcessual\": \"Réu\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"67342\"\n              },\n              \"documento\": \"999.999.999-99\",\n              \"nomeCompleto\": \"CAMILA RODRIGUES FREITAS\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"42337\"\n              },\n              \"documento\": \"000.000.000-00\",\n              \"nomeCompleto\": \"DIEGO ALVES MOREIRA\"\n            },\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"53795\"\n              },\n              \"documento\": \"121.212.121-21\",\n              \"nomeCompleto\": \"LARISSA PEREIRA GOMES\"\n            }\n          ],\n          \"documento\": \"33.333.333/0001-33\",\n          \"nomeCompleto\": \"INDUSTRIA E COMERCIO SANTA CLARA LTDA\",\n          \"vinculoDocumento\": \"INFERIDO\",\n          \"posicaoProcessual\": \"Réu\"\n        },\n        {\n          \"polo\": \"Passivo\",\n          \"advogados\": [\n            {\n              \"oab\": {\n                \"uf\": \"MG\",\n                \"numeroOAB\": \"56526\"\n              },\n              \"documento\": \"131.313.131-31\",\n              \"nomeCompleto\": \"RODRIGO TEIXEIRA CASTRO\"\n            }\n          ],\n          \"documento\": \"44.444.444/0001-44\",\n          \"nomeCompleto\": \"AGROPECUARIA EXEMPLO LTDA\",\n          \"vinculoDocumento\": \"AUTOS\",\n          \"posicaoProcessual\": \"Réu\"\n        }\n      ],\n      \"sistema\": \"TJMG\",\n      \"assuntos\": [\n        {\n          \"assunto\": \"Civil\",\n          \"codigoAssunto\": null,\n          \"assuntoPrincipal\": true\n        },\n        {\n          \"assunto\": \"Responsabilidade Civil\",\n          \"codigoAssunto\": \"10431\",\n          \"assuntoPrincipal\": false\n        },\n        {\n          \"assunto\": \"Dano Ambiental\",\n          \"codigoAssunto\": null,\n          \"assuntoPrincipal\": false\n        }\n      ],\n      \"instancia\": 1,\n      \"areaDireito\": \"Direito Civil\",\n      \"prioritario\": false,\n      \"dataAutuacao\": \"14/02/2017 00:00:00\",\n      \"ambitoJustica\": \"Justiça Estadual\",\n      \"classificacao\": {\n        \"descricao\": \"Procedimento do Juizado Especial Cível\",\n        \"codigoClassificacao\": \"436\"\n      },\n      \"orgaoJulgador\": {\n        \"uf\": \"MG\",\n        \"cidade\": null,\n        \"comarca\": null,\n        \"tribunal\": \"TJ-MG\",\n        \"unidadeOrigem\": \"Governador Valadares\",\n        \"orgaoResponsavel\": \"Uj - 2º Jd Cível\"\n      },\n      \"valorProcesso\": \"R$ 30.000,00\",\n      \"numeroProcesso\": \"28374653120178130892\",\n      \"segredoJustica\": false,\n      \"justicaGratuita\": false,\n      \"processoDigital\": false,\n      \"dataDistribuicao\": \"14/02/2017 00:00:00\",\n      \"tutelaAntecipada\": false,\n      \"processosRelacionados\": [],\n      \"detalhesStatusProcesso\": {\n        \"penhoras\": [],\n        \"julgamentos\": [\n          {\n            \"dataJulgamento\": \"04/07/2018 00:00:00\",\n            \"tipoJulgamento\": \"Extinta\",\n            \"statusJulgamento\": \"Extincao por Desistencia\"\n          }\n        ],\n        \"statusDetalhes\": \"Arquivamento Definitivo\",\n        \"dataArquivamento\": \"18/06/2021 00:00:00\",\n        \"dataTransitoJulgado\": \"23/07/2018 00:00:00\"\n      }\n    }\n  ],\n  \"observacoes\": \"A entidade possui vários processos, inclusive como réu.\",\n  \"totalProcessos\": 2,\n  \"documentoConsultado\": \"333.333.333-33\"\n}"
             }
           ]
         },
@@ -6177,6 +6153,100 @@
           ]
         },
         {
+          "name": "Consulta Veicular — Frotas Nacional (frotas-nacional)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Lista os veículos vinculados a um CPF ou CNPJ em todo o território nacional: placa, marca/modelo, cor, ano, UF, chassi e RENAVAM. Para verificação patrimonial, análise de crédito e gestão de frotas.\n\nPreco: R$ 6,90 por consulta.\nDocumentacao: https://dabradata.com/docs/veicular/frotas-nacional",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/frotas-nacional?cnpj={{CNPJ}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "frotas-nacional"
+              ],
+              "query": [
+                {
+                  "key": "cpf",
+                  "value": "{{CPF}}",
+                  "disabled": true,
+                  "description": "CPF do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`."
+                },
+                {
+                  "key": "cnpj",
+                  "value": "{{CNPJ}}",
+                  "disabled": false,
+                  "description": "CNPJ do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemplo (chave de teste, X-Example: true)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "Lista os veículos vinculados a um CPF ou CNPJ em todo o território nacional: placa, marca/modelo, cor, ano, UF, chassi e RENAVAM. Para verificação patrimonial, análise de crédito e gestão de frotas.\n\nPreco: R$ 6,90 por consulta.\nDocumentacao: https://dabradata.com/docs/veicular/frotas-nacional",
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/consulta/frotas-nacional?cnpj={{CNPJ}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "consulta",
+                    "frotas-nacional"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpf",
+                      "value": "{{CPF}}",
+                      "disabled": true,
+                      "description": "CPF do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`."
+                    },
+                    {
+                      "key": "cnpj",
+                      "value": "{{CNPJ}}",
+                      "disabled": false,
+                      "description": "CNPJ do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Example",
+                  "value": "true"
+                }
+              ],
+              "body": "{\n  \"veiculos\": [\n    {\n      \"uf\": \"SP\",\n      \"cor\": \"PRATA\",\n      \"motor\": null,\n      \"placa\": \"ABC-1D23\",\n      \"chassi\": \"9BWZZZ00000000000\",\n      \"renavam\": \"000000000\",\n      \"anoModelo\": \"2019\",\n      \"marcaModelo\": \"VW/GOL 1.0\",\n      \"tipoVeiculo\": null,\n      \"anoFabricacao\": \"2018\"\n    },\n    {\n      \"uf\": \"MG\",\n      \"cor\": \"VERMELHA\",\n      \"motor\": null,\n      \"placa\": \"XYZ-4A56\",\n      \"chassi\": \"9C2ZZZ00000000000\",\n      \"renavam\": \"111111111\",\n      \"anoModelo\": \"2021\",\n      \"marcaModelo\": \"HONDA/CG 160 TITAN\",\n      \"tipoVeiculo\": null,\n      \"anoFabricacao\": \"2021\"\n    }\n  ],\n  \"documento\": \"123.456.789-09\",\n  \"proprietario\": \"NOME DO PROPRIETARIO EXEMPLO\",\n  \"quantidadeVeiculos\": 2\n}"
+            }
+          ]
+        },
+        {
           "name": "Gravame Veicular (gravame-veicular)",
           "request": {
             "method": "POST",
@@ -6266,7 +6336,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"veiculo\": {\n    \"placa\": \"string\",\n    \"chassi\": \"string\",\n    \"marcaModelo\": \"string\"\n  },\n  \"contrato\": {\n    \"uf\": \"string\",\n    \"data\": \"string\",\n    \"numero\": \"string\"\n  },\n  \"situacao\": \"string\",\n  \"restricao\": {\n    \"uf\": \"string\",\n    \"data\": \"string\",\n    \"numero\": \"string\"\n  },\n  \"temGravame\": \"boolean\",\n  \"agenteFinanceiro\": {\n    \"nome\": \"string\",\n    \"codigo\": \"string\",\n    \"documento\": \"string\"\n  },\n  \"situacaoDescricao\": \"string\"\n}"
+              "body": "{\n  \"veiculo\": {\n    \"placa\": \"ABC1D23\",\n    \"chassi\": \"9BWZZZ00000000000\",\n    \"marcaModelo\": \"MARCA/MODELO EXEMPLO\"\n  },\n  \"contrato\": {\n    \"uf\": \"SP\",\n    \"data\": \"15/12/2023\",\n    \"numero\": \"87654321\"\n  },\n  \"gravames\": [\n    {\n      \"contrato\": {\n        \"uf\": \"SP\",\n        \"data\": \"15/12/2023\",\n        \"numero\": \"87654321\"\n      },\n      \"situacao\": \"ATIVO\",\n      \"restricao\": {\n        \"uf\": \"SP\",\n        \"data\": \"01/01/2024\",\n        \"numero\": \"12345678\"\n      },\n      \"codigoSituacao\": null,\n      \"agenteFinanceiro\": {\n        \"nome\": \"BANCO EXEMPLO S.A.\",\n        \"codigo\": \"0001\",\n        \"documento\": \"00000000000191\"\n      },\n      \"situacaoDescricao\": \"COM ALIENACAO FIDUCIARIA DOC. EMITIDO\"\n    }\n  ],\n  \"situacao\": \"ATIVO\",\n  \"restricao\": {\n    \"uf\": \"SP\",\n    \"data\": \"01/01/2024\",\n    \"numero\": \"12345678\"\n  },\n  \"temGravame\": true,\n  \"agenteFinanceiro\": {\n    \"nome\": \"BANCO EXEMPLO S.A.\",\n    \"codigo\": \"0001\",\n    \"documento\": \"00000000000191\"\n  },\n  \"situacaoDescricao\": \"COM ALIENACAO FIDUCIARIA DOC. EMITIDO\"\n}"
             }
           ]
         },
@@ -6349,6 +6419,88 @@
                 }
               ],
               "body": "{\n  \"uf\": \"string\",\n  \"cnh\": \"string\",\n  \"cpf\": \"string\",\n  \"nome\": \"string\",\n  \"nacionalidade\": \"string\",\n  \"permissionario\": \"boolean\",\n  \"dataPrimeiraCNH\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Leilão Veicular (leilao-veicular)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Descubra em poucos segundos se um veículo já passou por leilão, só com a placa: data, leiloeiro, pátio e quem o levou a leilão (seguradora, financeira ou órgão público). Um histórico que o documento do Detran não mostra.\n\nPreco: R$ 13,99 por consulta.\nDocumentacao: https://dabradata.com/docs/veicular/leilao-veicular",
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consulta/leilao-veicular?placa={{PLACA}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "consulta",
+                "leilao-veicular"
+              ],
+              "query": [
+                {
+                  "key": "placa",
+                  "value": "{{PLACA}}",
+                  "disabled": false,
+                  "description": "Placa do veículo, sem hífen — formato antigo (ABC1234) ou Mercosul (ABC1D34)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemplo (chave de teste, X-Example: true)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "Descubra em poucos segundos se um veículo já passou por leilão, só com a placa: data, leiloeiro, pátio e quem o levou a leilão (seguradora, financeira ou órgão público). Um histórico que o documento do Detran não mostra.\n\nPreco: R$ 13,99 por consulta.\nDocumentacao: https://dabradata.com/docs/veicular/leilao-veicular",
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/consulta/leilao-veicular?placa={{PLACA}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "consulta",
+                    "leilao-veicular"
+                  ],
+                  "query": [
+                    {
+                      "key": "placa",
+                      "value": "{{PLACA}}",
+                      "disabled": false,
+                      "description": "Placa do veículo, sem hífen — formato antigo (ABC1234) ou Mercosul (ABC1D34)."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Example",
+                  "value": "true"
+                }
+              ],
+              "body": "{\n  \"leiloes\": [\n    {\n      \"data\": \"01/03/2026\",\n      \"lote\": \"123\",\n      \"patio\": \"PATIO EXEMPLO\",\n      \"comitente\": \"SEGURADORA EXEMPLO S.A.\",\n      \"leiloeiro\": \"NOME DO LEILOEIRO EXEMPLO\",\n      \"classificacao\": \"SUCATA\"\n    },\n    {\n      \"data\": \"01/03/2026\",\n      \"lote\": null,\n      \"patio\": null,\n      \"comitente\": \"SEGURADORA EXEMPLO S.A.\",\n      \"leiloeiro\": null,\n      \"classificacao\": null\n    }\n  ],\n  \"veiculo\": {\n    \"cor\": \"PRATA\",\n    \"placa\": \"ABC-1D23\",\n    \"chassi\": \"9BWZZZ00000000000\",\n    \"anoModelo\": \"2019\",\n    \"marcaModelo\": \"MARCA/MODELO EXEMPLO\"\n  },\n  \"temLeilao\": true,\n  \"quantidadeRegistros\": 2\n}"
             }
           ]
         },
@@ -6835,7 +6987,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"regiao\": \"string\",\n  \"status\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"ocorrencias\": [\n    {\n      \"classe\": \"string\",\n      \"numero\": \"string\",\n      \"partes\": [\n        \"string\"\n      ],\n      \"situacao\": \"string\",\n      \"anoAutuacao\": \"string\"\n    }\n  ],\n  \"linkValidacao\": \"string\",\n  \"codigoValidacao\": \"string\",\n  \"mensagemCertidao\": \"string\",\n  \"possuiOcorrencia\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"regiao\": \"string\",\n  \"status\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"ocorrencias\": [\n    {\n      \"classe\": \"string\",\n      \"numero\": \"string\",\n      \"partes\": [\n        \"string\"\n      ],\n      \"situacao\": \"string\",\n      \"anoAutuacao\": \"string\"\n    }\n  ],\n  \"linkValidacao\": \"string\",\n  \"codigoValidacao\": \"string\",\n  \"mensagemCertidao\": \"string\",\n  \"possuiOcorrencia\": \"boolean\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -7353,7 +7505,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"nome\": \"string\",\n  \"regiao\": \"string\",\n  \"status\": \"string\",\n  \"documento\": \"string\",\n  \"processos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": null,\n  \"numeroCertidao\": null,\n  \"possuiProcesso\": \"boolean\",\n  \"codigoAutenticidade\": \"string\"\n}"
+              "body": "{\n  \"nome\": \"string\",\n  \"regiao\": \"string\",\n  \"status\": \"string\",\n  \"documento\": \"string\",\n  \"processos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": null,\n  \"numeroCertidao\": null,\n  \"possuiProcesso\": \"boolean\",\n  \"codigoAutenticidade\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         }
@@ -7621,7 +7773,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"uf\": null,\n  \"cpf\": \"***\",\n  \"situacao\": \"Não encontrado\",\n  \"municipio\": null,\n  \"numeroCaf\": null,\n  \"cadastrador\": null,\n  \"dataEmissao\": null,\n  \"cnpjEntidade\": null,\n  \"dataValidade\": null,\n  \"dataInscricao\": null,\n  \"condicaoPosseUso\": null,\n  \"ultimaAtualizacao\": null,\n  \"atividadePrincipal\": null,\n  \"caracterizacaoUFPA\": null,\n  \"composicaoFamiliar\": [],\n  \"formasAssociativas\": [],\n  \"enquadramentoPRONAF\": null,\n  \"entidadeResponsavel\": null,\n  \"numImoveisExplorados\": 0,\n  \"tamanhoImovelPrincipal\": null,\n  \"totalEstabelecimentoHA\": 0,\n  \"totalEstabelecimentoM2\": 0\n}"
+              "body": "{\n  \"uf\": null,\n  \"cpf\": \"***\",\n  \"situacao\": \"Não encontrado\",\n  \"municipio\": null,\n  \"numeroCaf\": null,\n  \"cadastrador\": null,\n  \"dataEmissao\": null,\n  \"cnpjEntidade\": null,\n  \"dataValidade\": null,\n  \"dataInscricao\": null,\n  \"condicaoPosseUso\": null,\n  \"ultimaAtualizacao\": null,\n  \"atividadePrincipal\": null,\n  \"caracterizacaoUFPA\": null,\n  \"composicaoFamiliar\": [],\n  \"formasAssociativas\": [],\n  \"enquadramentoPRONAF\": null,\n  \"entidadeResponsavel\": null,\n  \"numImoveisExplorados\": 0,\n  \"tamanhoImovelPrincipal\": null,\n  \"totalEstabelecimentoHA\": 0,\n  \"totalEstabelecimentoM2\": 0,\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -7879,7 +8031,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"app\": {\n    \"area\": \"string\",\n    \"recompor\": \"string\",\n    \"ruralConsolidada\": \"string\",\n    \"remanescenteVegetacaoNativa\": \"string\"\n  },\n  \"dadosImovel\": {\n    \"uf\": \"string\",\n    \"area\": \"string\",\n    \"latitude\": \"string\",\n    \"longitude\": \"string\",\n    \"municipio\": \"string\",\n    \"dataInscricao\": \"string\",\n    \"modulosFiscais\": \"string\",\n    \"dataUltimaRetificacao\": \"string\"\n  },\n  \"usoRestrito\": {\n    \"area\": \"string\",\n    \"recompor\": \"string\"\n  },\n  \"inscricaoCAR\": \"string\",\n  \"reservaLegal\": {\n    \"averbada\": \"string\",\n    \"proposta\": \"string\",\n    \"recompor\": \"string\",\n    \"declarada\": \"string\",\n    \"localizacao\": \"string\",\n    \"averbadaArt30\": \"string\",\n    \"passivoExcedente\": \"string\",\n    \"aprovadaNaoAverbada\": \"string\"\n  },\n  \"coberturaSolo\": {\n    \"vegetacaoNativa\": \"string\",\n    \"ruralConsolidada\": \"string\",\n    \"servidaoAdministrativa\": \"string\"\n  },\n  \"condicaoExterna\": \"string\",\n  \"situacaoCadastro\": \"string\",\n  \"informacoesAdicionais\": []\n}"
+              "body": "{\n  \"app\": {\n    \"area\": \"string\",\n    \"recompor\": \"string\",\n    \"ruralConsolidada\": \"string\",\n    \"remanescenteVegetacaoNativa\": \"string\"\n  },\n  \"dadosImovel\": {\n    \"uf\": \"string\",\n    \"area\": \"string\",\n    \"latitude\": \"string\",\n    \"longitude\": \"string\",\n    \"municipio\": \"string\",\n    \"dataInscricao\": \"string\",\n    \"modulosFiscais\": \"string\",\n    \"dataUltimaRetificacao\": \"string\"\n  },\n  \"usoRestrito\": {\n    \"area\": \"string\",\n    \"recompor\": \"string\"\n  },\n  \"inscricaoCAR\": \"string\",\n  \"reservaLegal\": {\n    \"averbada\": \"string\",\n    \"proposta\": \"string\",\n    \"recompor\": \"string\",\n    \"declarada\": \"string\",\n    \"localizacao\": \"string\",\n    \"averbadaArt30\": \"string\",\n    \"passivoExcedente\": \"string\",\n    \"aprovadaNaoAverbada\": \"string\"\n  },\n  \"coberturaSolo\": {\n    \"vegetacaoNativa\": \"string\",\n    \"ruralConsolidada\": \"string\",\n    \"servidaoAdministrativa\": \"string\"\n  },\n  \"condicaoExterna\": \"string\",\n  \"situacaoCadastro\": \"string\",\n  \"informacoesAdicionais\": [],\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8011,7 +8163,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"nome\": \"string\",\n  \"numero\": \"number\",\n  \"status\": \"string\",\n  \"debitos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"possuiDebito\": \"boolean\",\n  \"efeitoNegativo\": \"boolean\",\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"nome\": \"string\",\n  \"numero\": \"number\",\n  \"status\": \"string\",\n  \"debitos\": [],\n  \"dataEmissao\": \"string\",\n  \"dataValidade\": \"string\",\n  \"possuiDebito\": \"boolean\",\n  \"efeitoNegativo\": \"boolean\",\n  \"documentoConsultado\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8105,7 +8257,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"nome\": null,\n  \"status\": \"string\",\n  \"embargos\": null,\n  \"endereco\": null,\n  \"documento\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"observacoes\": [\n    \"string\"\n  ],\n  \"dataValidade\": \"string\",\n  \"possuiEmbargo\": \"boolean\",\n  \"numeroCertidao\": \"string\"\n}"
+              "body": "{\n  \"nome\": null,\n  \"status\": \"string\",\n  \"embargos\": null,\n  \"endereco\": null,\n  \"documento\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"observacoes\": [\n    \"string\"\n  ],\n  \"dataValidade\": \"string\",\n  \"possuiEmbargo\": \"boolean\",\n  \"numeroCertidao\": \"string\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8199,7 +8351,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"uf\": \"string\",\n  \"cep\": \"string\",\n  \"bairro\": \"string\",\n  \"numero\": \"number\",\n  \"documento\": \"string\",\n  \"municipio\": \"string\",\n  \"atividades\": null,\n  \"categorias\": {\n    \"listaCategorias\": [\n      {\n        \"detalhe\": \"string\",\n        \"categoria\": \"string\"\n      }\n    ]\n  },\n  \"logradouro\": \"string\",\n  \"observacao\": null,\n  \"complemento\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"dataAbertura\": \"string\",\n  \"dataConsulta\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeFantasia\": \"string\",\n  \"numeroRegistro\": \"string\",\n  \"nomeEmpresarial\": \"string\",\n  \"constaCertificado\": \"boolean\"\n}"
+              "body": "{\n  \"uf\": \"string\",\n  \"cep\": \"string\",\n  \"bairro\": \"string\",\n  \"numero\": \"number\",\n  \"documento\": \"string\",\n  \"municipio\": \"string\",\n  \"atividades\": null,\n  \"categorias\": {\n    \"listaCategorias\": [\n      {\n        \"detalhe\": \"string\",\n        \"categoria\": \"string\"\n      }\n    ]\n  },\n  \"logradouro\": \"string\",\n  \"observacao\": null,\n  \"complemento\": \"string\",\n  \"dataEmissao\": \"string\",\n  \"dataAbertura\": \"string\",\n  \"dataConsulta\": \"string\",\n  \"dataValidade\": \"string\",\n  \"nomeFantasia\": \"string\",\n  \"numeroRegistro\": \"string\",\n  \"nomeEmpresarial\": \"string\",\n  \"constaCertificado\": \"boolean\",\n  \"comprovante\": [\n    \"https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2\"\n  ]\n}"
             }
           ]
         },
@@ -8330,6 +8482,12 @@
                   "value": "{{CPF}}",
                   "disabled": false,
                   "description": "CPF (somente números, 11 dígitos)"
+                },
+                {
+                  "key": "data_nascimento",
+                  "value": "",
+                  "disabled": true,
+                  "description": "OPCIONAL (DD/MM/AAAA). Só é necessária quando a resposta vier com status requer_dados (data de nascimento não localizada ou não conferida): reenvie a consulta com a data."
                 }
               ]
             }
@@ -8363,6 +8521,12 @@
                       "value": "{{CPF}}",
                       "disabled": false,
                       "description": "CPF (somente números, 11 dígitos)"
+                    },
+                    {
+                      "key": "data_nascimento",
+                      "value": "",
+                      "disabled": true,
+                      "description": "OPCIONAL (DD/MM/AAAA). Só é necessária quando a resposta vier com status requer_dados (data de nascimento não localizada ou não conferida): reenvie a consulta com a data."
                     }
                   ]
                 }
@@ -11139,7 +11303,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Consulta a situação de entrega de uma mensagem já enviada, pelo `request_id`. Gratuita.\n\nPreco: R$ 0,00 por consulta.\nDocumentacao: https://dabradata.com/docs/mensageria/sms-status",
+            "description": "Consulta a situação de uma mensagem já enviada, pelo `request_id`: retida em análise, liberada para a operadora, entregue ou recusada, com os horários de cada etapa. Gratuita.\n\nPreco: R$ 0,00 por consulta.\nDocumentacao: https://dabradata.com/docs/mensageria/sms-status",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"request_id\": \"\"\n}",
@@ -11178,7 +11342,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Consulta a situação de entrega de uma mensagem já enviada, pelo `request_id`. Gratuita.\n\nPreco: R$ 0,00 por consulta.\nDocumentacao: https://dabradata.com/docs/mensageria/sms-status",
+                "description": "Consulta a situação de uma mensagem já enviada, pelo `request_id`: retida em análise, liberada para a operadora, entregue ou recusada, com os horários de cada etapa. Gratuita.\n\nPreco: R$ 0,00 por consulta.\nDocumentacao: https://dabradata.com/docs/mensageria/sms-status",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"request_id\": \"\"\n}",
@@ -11215,7 +11379,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"status\": \"delivered\",\n  \"creditos\": 1,\n  \"operadora\": \"VIVO\",\n  \"request_id\": \"7f3a1c92-0000-0000-0000-000000000000\"\n}"
+              "body": "{\n  \"status\": \"delivered\",\n  \"creditos\": 1,\n  \"criado_em\": \"2026-10-21T14:40:00+00:00\",\n  \"operadora\": \"VIVO\",\n  \"enviado_em\": \"2026-10-21T14:58:10+00:00\",\n  \"request_id\": \"7f3a1c92-0000-0000-0000-000000000000\",\n  \"entregue_em\": \"2026-10-21T14:58:16+00:00\",\n  \"status_detalhe\": \"Entrega confirmada pela operadora.\"\n}"
             }
           ]
         },

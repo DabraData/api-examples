@@ -1,5 +1,5 @@
 # Snapshot da especificacao OpenAPI da Dabra.
-# Fonte: https://app.dabradata.com/api/v1/openapi.json (baixado em 2026-10-11).
+# Fonte: https://app.dabradata.com/api/v1/openapi.json (baixado em 2026-10-23).
 # Em caso de divergencia, vale a URL viva. Para atualizar:
 #   python scripts/atualizar_referencia.py
 openapi: 3.1.0
@@ -68,6 +68,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -75,6 +83,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 nome: string
                 numero: number
@@ -85,6 +104,8 @@ paths:
                 possuiDebito: boolean
                 efeitoNegativo: boolean
                 documentoConsultado: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -130,6 +151,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -137,6 +166,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 nome: null
                 status: string
@@ -149,6 +189,8 @@ paths:
                 dataValidade: string
                 possuiEmbargo: boolean
                 numeroCertidao: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -194,6 +236,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -201,6 +251,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 uf: string
                 cep: string
@@ -224,6 +285,8 @@ paths:
                 numeroRegistro: string
                 nomeEmpresarial: string
                 constaCertificado: boolean
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -965,6 +1028,14 @@ paths:
           type: string
           format: cpf
         example: SEU_CPF
+      - name: data_nascimento
+        in: query
+        required: false
+        description: 'OPCIONAL (DD/MM/AAAA). Só é necessária quando a resposta vier com status requer_dados
+          (data de nascimento não localizada ou não conferida): reenvie a consulta com a data.'
+        schema:
+          type: string
+          format: br_date
       - name: comprovante
         in: query
         required: false
@@ -1543,6 +1614,14 @@ paths:
           - SE
           - TO
         example: SP
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -1550,6 +1629,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 uf: string
                 advogados:
@@ -1567,6 +1657,8 @@ paths:
                 observacoes: string
                 nomePesquisado: null
                 possuiRegistros: boolean
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4229,6 +4321,14 @@ paths:
           Alternativa a `cpf`/`cnpj` para localizar o registro junto à ANTT.
         schema:
           type: string
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -4236,6 +4336,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 apto: boolean
                 rntrc: number
@@ -4250,6 +4361,8 @@ paths:
                   uf: string
                   municipio: string
                 transportador: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4294,6 +4407,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -4301,6 +4422,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 nome: string
                 status: string
@@ -4309,6 +4441,8 @@ paths:
                 codigoDeclaracao: string
                 possuiPendencias: boolean
                 documentoConsultado: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4372,6 +4506,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -4379,6 +4521,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 uf: string
                 nome: string
@@ -4391,87 +4544,8 @@ paths:
                 codigoDeclaracao: null
                 possuiPendencias: boolean
                 documentoConsultado: string
-        '400':
-          $ref: '#/components/responses/Error400'
-        '401':
-          $ref: '#/components/responses/Error401'
-        '402':
-          $ref: '#/components/responses/Error402'
-        '404':
-          $ref: '#/components/responses/Error404'
-        '429':
-          $ref: '#/components/responses/Error429'
-        '500':
-          $ref: '#/components/responses/Error500'
-      x-one-of-groups:
-      - - cpf
-        - cnpj
-  /api/v1/consulta/cadin-federal:
-    get:
-      summary: CADIN Estadual — BA, GO, MG, MT, PA, PR, RN e RS
-      description: '[LEGADO — prefira o cadin-estadual, que unifica todos os estados, inclusive SP] CADIN
-        Estadual (Secretarias da Fazenda) — atende BA, GO, MG, MT, PA, PR, RN e RS. São Paulo NÃO é atendido
-        aqui: use cadin-estadual (ou cadin-sp).
-
-
-        Obrigatório informar pelo menos um de: cpf ou cnpj.'
-      operationId: cadin-federal
-      tags:
-      - Fiscal
-      parameters:
-      - name: cpf
-        in: query
-        required: false
-        description: CPF (somente números, 11 dígitos)
-        schema:
-          type: string
-          format: cpf
-        example: SEU_CPF
-      - name: cnpj
-        in: query
-        required: false
-        description: CNPJ (somente números, 14 dígitos)
-        schema:
-          type: string
-          format: cnpj
-        example: SEU_CNPJ
-      - name: uf
-        in: query
-        required: true
-        description: 'Estados atendidos: BA, GO, MG, MT, PA, PR, RN, RS. Para São Paulo, selecione CADIN
-          — São Paulo (cadin-sp).'
-        schema:
-          type: string
-          format: upper
-          enum:
-          - BA
-          - GO
-          - MG
-          - MT
-          - PA
-          - PR
-          - RN
-          - RS
-        example: SP
-      responses:
-        '200':
-          description: Sucesso
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                uf: string
-                nome: null
-                status: string
-                pendencias: []
-                valorTotal: null
-                dataValidade: null
-                numeroCertidao: null
-                totalPendencias: null
-                codigoDeclaracao: null
-                possuiPendencias: boolean
-                documentoConsultado: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4552,8 +4626,9 @@ paths:
   /api/v1/consulta/pgfn-devedores:
     get:
       summary: Devedores da União (PGFN)
-      description: 'Verifica se uma pessoa física ou jurídica possui débitos federais registrados, retornando
-        detalhes sobre inscrições, valores, natureza e situação das dívidas.
+      description: 'Verifica se uma pessoa física ou jurídica tem dívida em cobrança na Dívida Ativa (lista
+        de devedores da PGFN): União, FGTS e convênios com estados, municípios e autarquias, com valor
+        total e inscrições.
 
 
         Obrigatório informar pelo menos um de: cpf ou cnpj.'
@@ -4577,6 +4652,14 @@ paths:
           type: string
           format: cnpj
         example: SEU_CNPJ
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -4584,6 +4667,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 uf: null
                 cnae: null
@@ -4601,6 +4695,8 @@ paths:
                 unidadeResponsavel: null
                 documentoConsultado: string
                 totalPrevidenciario: null
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4616,6 +4712,206 @@ paths:
       x-one-of-groups:
       - - cpf
         - cnpj
+  /api/v1/consulta/historico-fiscal-pj:
+    get:
+      summary: Histórico Fiscal da Empresa
+      description: 'Histórico da empresa inteira na dívida ativa da União desde 2020, trimestre a trimestre:
+        o que deixou de constar, parcelamentos e rompimentos, ajuizamentos e a foto atual, com a data
+        de cada publicação da PGFN.'
+      operationId: historico-fiscal-pj
+      tags:
+      - Fiscal
+      parameters:
+      - name: cnpj
+        in: query
+        required: true
+        description: CNPJ da empresa (matriz ou filial), com ou sem máscara. Aceita o CNPJ alfanumérico.
+          A resposta cobre a empresa inteira (todos os estabelecimentos da mesma raiz).
+        schema:
+          type: string
+          format: cnpj
+        example: SEU_CNPJ
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                cnpj: '11222333000181'
+                pgfn:
+                  atual:
+                    outras:
+                      qtd: 0
+                      valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                    garantida:
+                      qtd: 0
+                      valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                    negociada:
+                      qtd: 0
+                      valor: 0.0
+                      subflags:
+                        negociacao_bloqueada:
+                          qtd: 0
+                          valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                    em_cobranca:
+                      qtd: 2
+                      valor: 5704.19
+                      subflags:
+                        protesto:
+                          qtd: 0
+                          valor: 0.0
+                        em_negociacao:
+                          qtd: 0
+                          valor: 0.0
+                        discussao_judicial:
+                          qtd: 0
+                          valor: 0.0
+                        falencia_concordata:
+                          qtd: 0
+                          valor: 0.0
+                        parcelamento_rescindido:
+                          qtd: 0
+                          valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                    beneficio_fiscal:
+                      qtd: 0
+                      valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                    suspensa_judicial:
+                      qtd: 0
+                      valor: 0.0
+                      qtd_ajuizada: 0
+                      valor_ajuizado: 0.0
+                  eventos:
+                  - cnpj: '11222333000181'
+                    desde: '2026-03-31'
+                    safra: '2026-06-30'
+                    evento: rompeu_parcelamento
+                    origem: geral
+                    ajuizada_antes: false
+                    data_inscricao: '2024-10-07'
+                    situacao_antes: negociada
+                    valor_anterior: 5210.88
+                    ajuizada_depois: false
+                    situacao_depois: em_cobranca
+                    numero_inscricao: '0000000000000'
+                  - cnpj: '11222333000181'
+                    desde: '2025-12-31'
+                    safra: '2026-03-31'
+                    evento: parcelou
+                    origem: geral
+                    ajuizada_antes: false
+                    data_inscricao: '2024-10-07'
+                    situacao_antes: em_cobranca
+                    valor_anterior: 5102.35
+                    ajuizada_depois: false
+                    situacao_depois: negociada
+                    numero_inscricao: '0000000000000'
+                  - cnpj: '11222333000181'
+                    desde: '2025-12-31'
+                    safra: '2026-03-31'
+                    evento: deixou_de_constar
+                    origem: geral
+                    ajuizada_antes: false
+                    data_inscricao: '2025-12-08'
+                    situacao_antes: em_cobranca
+                    valor_anterior: 118.4
+                    ajuizada_depois: null
+                    situacao_depois: null
+                    numero_inscricao: '0000000000000'
+                  indicadores:
+                    ja_deveu: true
+                    parcelou: true
+                    em_cobranca_hoje: true
+                    deixou_de_constar: true
+                    rompeu_parcelamento: true
+                    nova_inscricao_apos_saida: true
+                  ajuizamentos:
+                    ultima_em: null
+                    inscricoes: 0
+                  eventos_total: 3
+                  parcelamentos:
+                    entradas:
+                      ultima_em: '2026-03-31'
+                      inscricoes: 1
+                      trimestres: 1
+                    rompimentos:
+                      ultima_em: '2026-06-30'
+                      inscricoes: 1
+                      trimestres: 1
+                  linha_do_tempo:
+                  - desde: '2026-03-31'
+                    safra: '2026-06-30'
+                    ajuizada: 0
+                    parcelou: 0
+                    mudou_situacao: 0
+                    deixou_de_constar:
+                      qtd: 0
+                      valor: 0.0
+                    rompeu_parcelamento: 1
+                  - desde: '2025-12-31'
+                    safra: '2026-03-31'
+                    ajuizada: 0
+                    parcelou: 1
+                    mudou_situacao: 0
+                    deixou_de_constar:
+                      qtd: 1
+                      valor: 118.4
+                    rompeu_parcelamento: 0
+                  deixou_de_constar:
+                    ultima_em: '2026-03-31'
+                    inscricoes: 1
+                    trimestres: 1
+                    primeira_em: '2026-03-31'
+                    renumeradas: 0
+                    valor_ultimo: 118.4
+                    por_situacao_anterior:
+                      garantida:
+                        qtd: 0
+                        valor: 0.0
+                      negociada:
+                        qtd: 0
+                        valor: 0.0
+                      em_cobranca:
+                        qtd: 1
+                        valor: 118.4
+                      suspensa_judicial:
+                        qtd: 0
+                        valor: 0.0
+                  eventos_truncados: false
+                escopo: raiz
+                fontes:
+                  pgfn:
+                    referencia: 2026_trimestre_02
+                    atualizado_em: '2026-10-11'
+                  pgfn_historico:
+                    desde: '2020-02-29'
+                    fotos: 25
+                    referencia: '2026-06-30'
+                    atualizado_em: '2026-10-19'
+                cnpj_raiz: '11222333'
+        '400':
+          $ref: '#/components/responses/Error400'
+        '401':
+          $ref: '#/components/responses/Error401'
+        '402':
+          $ref: '#/components/responses/Error402'
+        '404':
+          $ref: '#/components/responses/Error404'
+        '429':
+          $ref: '#/components/responses/Error429'
+        '500':
+          $ref: '#/components/responses/Error500'
   /api/v1/consulta/nfe-completa:
     get:
       summary: Nota Fiscal Eletrônica - Completa
@@ -5758,6 +6054,14 @@ paths:
           na consulta pelo CPF.
         schema:
           type: string
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -5765,16 +6069,31 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 cpf: string
                 nome: string
                 status: string
                 nomeMae: string
+                protocolo: string
                 dataEmissao: string
                 dataValidade: string
                 dataNascimento: string
                 numeroCertidao: string
+                certidaoEmitida: boolean
                 possuiAntecedentesCriminais: boolean
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -5990,6 +6309,7 @@ paths:
                       nomeCompleto: RENATA OLIVEIRA PEREIRA DA SILVA
                     documento: 11.111.111/0001-11
                     nomeCompleto: TRANSPORTES EXEMPLO EIRELI
+                    vinculoDocumento: OFICIAL
                     posicaoProcessual: Executado
                   - polo: Ativo
                     advogados:
@@ -6000,6 +6320,7 @@ paths:
                       nomeCompleto: BRUNO CESAR ALMEIDA SANTOS
                     documento: 333.333.333-33
                     nomeCompleto: MARCOS ANTONIO PEREIRA LIMA
+                    vinculoDocumento: INFERIDO
                     posicaoProcessual: Exequente
                   sistema: PJE-TJRJ
                   assuntos:
@@ -6057,6 +6378,7 @@ paths:
                       nomeCompleto: PAULO ROBERTO FERNANDES SILVA
                     documento: 555.555.555-55
                     nomeCompleto: JULIANA CASTRO NOGUEIRA
+                    vinculoDocumento: OFICIAL
                     posicaoProcessual: Autor
                   - polo: Ativo
                     advogados:
@@ -6067,6 +6389,7 @@ paths:
                       nomeCompleto: PAULO ROBERTO FERNANDES SILVA
                     documento: 666.666.666-66
                     nomeCompleto: FELIPE HENRIQUE COSTA ARAUJO
+                    vinculoDocumento: INFERIDO
                     posicaoProcessual: Autor
                   - polo: Ativo
                     advogados:
@@ -6077,6 +6400,7 @@ paths:
                       nomeCompleto: PAULO ROBERTO FERNANDES SILVA
                     documento: 333.333.333-33
                     nomeCompleto: MARCOS ANTONIO PEREIRA LIMA
+                    vinculoDocumento: AUTOS
                     posicaoProcessual: Autor
                   - polo: Passivo
                     advogados:
@@ -6092,6 +6416,7 @@ paths:
                       nomeCompleto: THIAGO LIMA BARBOSA
                     documento: 22.222.222/0001-22
                     nomeCompleto: COMERCIO DE MATERIAIS DE CONSTRUCAO VALE VERDE LTDA
+                    vinculoDocumento: OFICIAL
                     posicaoProcessual: Réu
                   - polo: Passivo
                     advogados:
@@ -6112,6 +6437,7 @@ paths:
                       nomeCompleto: LARISSA PEREIRA GOMES
                     documento: 33.333.333/0001-33
                     nomeCompleto: INDUSTRIA E COMERCIO SANTA CLARA LTDA
+                    vinculoDocumento: INFERIDO
                     posicaoProcessual: Réu
                   - polo: Passivo
                     advogados:
@@ -6122,6 +6448,7 @@ paths:
                       nomeCompleto: RODRIGO TEIXEIRA CASTRO
                     documento: 44.444.444/0001-44
                     nomeCompleto: AGROPECUARIA EXEMPLO LTDA
+                    vinculoDocumento: AUTOS
                     posicaoProcessual: Réu
                   sistema: TJMG
                   assuntos:
@@ -6498,7 +6825,8 @@ paths:
   /api/v1/consulta/sms-status:
     post:
       summary: Status de SMS
-      description: Consulta a situação de entrega de uma mensagem já enviada, pelo `request_id`. Gratuita.
+      description: 'Consulta a situação de uma mensagem já enviada, pelo `request_id`: retida em análise,
+        liberada para a operadora, entregue ou recusada, com os horários de cada etapa. Gratuita.'
       operationId: sms-status
       tags:
       - Mensageria
@@ -6520,8 +6848,12 @@ paths:
               example:
                 status: delivered
                 creditos: 1
+                criado_em: '2026-10-21T14:40:00+00:00'
                 operadora: VIVO
+                enviado_em: '2026-10-21T14:58:10+00:00'
                 request_id: 7f3a1c92-0000-0000-0000-000000000000
+                entregue_em: '2026-10-21T14:58:16+00:00'
+                status_detalhe: Entrega confirmada pela operadora.
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -6906,6 +7238,14 @@ paths:
           type: string
           format: cpf
         example: SEU_CPF
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -6913,6 +7253,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 receita:
                   anoObito: null
@@ -6954,6 +7305,8 @@ paths:
                   rendaEstimada: string
                   dataNascimento: string
                   rendaFaixaSalarial: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -9278,6 +9631,8 @@ paths:
                 - dataFim: null
                   dataInicio: null
                   detalhamento: string
+                situacaoRegimeRegularCBS: string
+                situacaoRegimeRegularIBS: string
                 eventosFuturosSimplesNacional:
                 - dataFim: null
                   dataInicio: null
@@ -9321,6 +9676,14 @@ paths:
           type: string
           format: cpf
         example: SEU_CPF
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso (inclui resultado negativo)
@@ -9328,6 +9691,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 uf: null
                 cpf: '***'
@@ -9351,6 +9725,8 @@ paths:
                 tamanhoImovelPrincipal: null
                 totalEstabelecimentoHA: 0
                 totalEstabelecimentoM2: 0
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -9527,6 +9903,14 @@ paths:
         schema:
           type: string
           format: upper
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -9534,6 +9918,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 app:
                   area: string
@@ -9569,6 +9964,8 @@ paths:
                 condicaoExterna: string
                 situacaoCadastro: string
                 informacoesAdicionais: []
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -10675,6 +11072,14 @@ paths:
           - TO
           - CAMPINAS
         example: SP
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -10682,6 +11087,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 regiao: string
                 status: string
@@ -10698,6 +11114,8 @@ paths:
                 mensagemCertidao: string
                 possuiOcorrencia: boolean
                 documentoConsultado: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -11315,6 +11733,14 @@ paths:
         schema:
           type: string
           pattern: ^(0?[1-9]|1[0-9]|2[0-4])$
+      - name: comprovante
+        in: query
+        required: false
+        description: Inclui o comprovante da consulta (link válido por 7 dias). Acréscimo de 25% sobre
+          o preço da consulta, cobrado somente quando o comprovante é entregue.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Sucesso
@@ -11322,6 +11748,17 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  comprovante:
+                    type: array
+                    description: 'Comprovante da consulta: o documento emitido pela fonte, num link aberto
+                      para você guardar. Só vem quando você pede com o parâmetro `comprovante` (acréscimo
+                      de 25% sobre o preço da consulta, cobrado somente quando o comprovante é entregue).
+                      O link vale por 7 dias a partir da emissão e o arquivo pode levar alguns segundos
+                      para ficar disponível. Chave opcional: leia como ausente quando não vier.'
+                    items:
+                      type: string
+                      format: uri
               example:
                 nome: string
                 regiao: string
@@ -11333,6 +11770,8 @@ paths:
                 numeroCertidao: null
                 possuiProcesso: boolean
                 codigoAutenticidade: string
+                comprovante:
+                - https://arquivos.dabradata.com/comprovantes/cpv_01J8Z3K9X2
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -11493,6 +11932,82 @@ paths:
           $ref: '#/components/responses/Error429'
         '500':
           $ref: '#/components/responses/Error500'
+  /api/v1/consulta/frotas-nacional:
+    get:
+      summary: Consulta Veicular — Frotas Nacional
+      description: 'Lista os veículos vinculados a um CPF ou CNPJ em todo o território nacional: placa,
+        marca/modelo, cor, ano, UF, chassi e RENAVAM. Para verificação patrimonial, análise de crédito
+        e gestão de frotas.
+
+
+        Obrigatório informar pelo menos um de: cpf ou cnpj.'
+      operationId: frotas-nacional
+      tags:
+      - Veicular
+      parameters:
+      - name: cpf
+        in: query
+        required: false
+        description: CPF do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`.
+        schema:
+          type: string
+          format: cpf
+        example: SEU_CPF
+      - name: cnpj
+        in: query
+        required: false
+        description: CNPJ do proprietário, com ou sem máscara. Informe `cpf` OU `cnpj`.
+        schema:
+          type: string
+          format: cnpj
+        example: SEU_CNPJ
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                veiculos:
+                - uf: SP
+                  cor: PRATA
+                  motor: null
+                  placa: ABC-1D23
+                  chassi: 9BWZZZ00000000000
+                  renavam: '000000000'
+                  anoModelo: '2019'
+                  marcaModelo: VW/GOL 1.0
+                  tipoVeiculo: null
+                  anoFabricacao: '2018'
+                - uf: MG
+                  cor: VERMELHA
+                  motor: null
+                  placa: XYZ-4A56
+                  chassi: 9C2ZZZ00000000000
+                  renavam: '111111111'
+                  anoModelo: '2021'
+                  marcaModelo: HONDA/CG 160 TITAN
+                  tipoVeiculo: null
+                  anoFabricacao: '2021'
+                documento: 123.456.789-09
+                proprietario: NOME DO PROPRIETARIO EXEMPLO
+                quantidadeVeiculos: 2
+        '400':
+          $ref: '#/components/responses/Error400'
+        '401':
+          $ref: '#/components/responses/Error401'
+        '402':
+          $ref: '#/components/responses/Error402'
+        '404':
+          $ref: '#/components/responses/Error404'
+        '429':
+          $ref: '#/components/responses/Error429'
+        '500':
+          $ref: '#/components/responses/Error500'
+      x-one-of-groups:
+      - - cpf
+        - cnpj
   /api/v1/consulta/gravame-veicular:
     post:
       summary: Gravame Veicular
@@ -11525,24 +12040,40 @@ paths:
                 type: object
               example:
                 veiculo:
-                  placa: string
-                  chassi: string
-                  marcaModelo: string
+                  placa: ABC1D23
+                  chassi: 9BWZZZ00000000000
+                  marcaModelo: MARCA/MODELO EXEMPLO
                 contrato:
-                  uf: string
-                  data: string
-                  numero: string
-                situacao: string
+                  uf: SP
+                  data: 15/12/2023
+                  numero: '87654321'
+                gravames:
+                - contrato:
+                    uf: SP
+                    data: 15/12/2023
+                    numero: '87654321'
+                  situacao: ATIVO
+                  restricao:
+                    uf: SP
+                    data: 01/01/2024
+                    numero: '12345678'
+                  codigoSituacao: null
+                  agenteFinanceiro:
+                    nome: BANCO EXEMPLO S.A.
+                    codigo: '0001'
+                    documento: 00000000000191
+                  situacaoDescricao: COM ALIENACAO FIDUCIARIA DOC. EMITIDO
+                situacao: ATIVO
                 restricao:
-                  uf: string
-                  data: string
-                  numero: string
-                temGravame: boolean
+                  uf: SP
+                  data: 01/01/2024
+                  numero: '12345678'
+                temGravame: true
                 agenteFinanceiro:
-                  nome: string
-                  codigo: string
-                  documento: string
-                situacaoDescricao: string
+                  nome: BANCO EXEMPLO S.A.
+                  codigo: '0001'
+                  documento: 00000000000191
+                situacaoDescricao: COM ALIENACAO FIDUCIARIA DOC. EMITIDO
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -11608,6 +12139,66 @@ paths:
         '500':
           $ref: '#/components/responses/Error500'
       x-empty-as-negative: true
+  /api/v1/consulta/leilao-veicular:
+    get:
+      summary: Leilão Veicular
+      description: 'Descubra em poucos segundos se um veículo já passou por leilão, só com a placa: data,
+        leiloeiro, pátio e quem o levou a leilão (seguradora, financeira ou órgão público). Um histórico
+        que o documento do Detran não mostra.'
+      operationId: leilao-veicular
+      tags:
+      - Veicular
+      parameters:
+      - name: placa
+        in: query
+        required: true
+        description: Placa do veículo, sem hífen — formato antigo (ABC1234) ou Mercosul (ABC1D34).
+        schema:
+          type: string
+          format: upper
+          pattern: ^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$
+        example: ABC1D23
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                leiloes:
+                - data: 01/03/2026
+                  lote: '123'
+                  patio: PATIO EXEMPLO
+                  comitente: SEGURADORA EXEMPLO S.A.
+                  leiloeiro: NOME DO LEILOEIRO EXEMPLO
+                  classificacao: SUCATA
+                - data: 01/03/2026
+                  lote: null
+                  patio: null
+                  comitente: SEGURADORA EXEMPLO S.A.
+                  leiloeiro: null
+                  classificacao: null
+                veiculo:
+                  cor: PRATA
+                  placa: ABC-1D23
+                  chassi: 9BWZZZ00000000000
+                  anoModelo: '2019'
+                  marcaModelo: MARCA/MODELO EXEMPLO
+                temLeilao: true
+                quantidadeRegistros: 2
+        '400':
+          $ref: '#/components/responses/Error400'
+        '401':
+          $ref: '#/components/responses/Error401'
+        '402':
+          $ref: '#/components/responses/Error402'
+        '404':
+          $ref: '#/components/responses/Error404'
+        '429':
+          $ref: '#/components/responses/Error429'
+        '500':
+          $ref: '#/components/responses/Error500'
   /api/v1/consulta/fipe-veiculo:
     get:
       summary: Tabela Fipe — Valor de Veículo
