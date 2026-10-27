@@ -1,5 +1,5 @@
 # Snapshot da especificacao OpenAPI da Dabra.
-# Fonte: https://app.dabradata.com/api/v1/openapi.json (baixado em 2026-10-23).
+# Fonte: https://app.dabradata.com/api/v1/openapi.json (baixado em 2026-10-27).
 # Em caso de divergencia, vale a URL viva. Para atualizar:
 #   python scripts/atualizar_referencia.py
 openapi: 3.1.0
@@ -3864,8 +3864,9 @@ paths:
   /api/v1/consulta/detalhamento-negativo:
     get:
       summary: Restrições e Negativações (Quod)
-      description: 'Retorna pendências de Pessoa Física ou Jurídica — protestos (cobertura SP), ações
-        judiciais, falências e cheques sem fundo — a partir da base da Quod, para análise de risco e compliance.
+      description: 'Retorna as pendências financeiras de uma Pessoa Física ou Jurídica: negativações por
+        credores, protestos (cobertura SP), ações judiciais, recuperações judiciais e falências e cheques
+        sem fundo, para análise de risco e compliance.
 
 
         Obrigatório informar pelo menos um de: cpf ou cnpj.'
@@ -3898,16 +3899,35 @@ paths:
                 type: object
               example:
                 observacao: null
-                pessoaFisica: null
-                pessoaJuridica:
+                pessoaFisica:
                   pendenciaFinanceira:
-                    status: string
+                    status: Consta Pendência
                     protestos: []
+                    negativacoes:
+                    - valor: 4310.5
+                      credor: BANCO EXEMPLO S.A.
+                      motivo: FINANCIAMENTOS
+                      endereco:
+                        uf: SP
+                        cep: null
+                        bairro: null
+                        cidade: SAO PAULO
+                        numero: null
+                        logradouro: null
+                        complemento: null
+                      situacao: ATIVO
+                      dataInclusao: 15/03/2026 00:00:00
+                      dataOcorrencia: 10/02/2026 00:00:00
+                      numeroContrato: 000123456789
+                      dataAtualizacao: null
+                      documentoCredor: 00.000.000/0001-00
+                      tipoParticipacao: PRINCIPAL
                     acoesJudiciais: []
-                    totalPendencia: number
+                    totalPendencia: 4310.5
                     chequesSemFundo: []
-                    recuperacoesJudiciaisFalencia: []
-                documentoConsultado: string
+                    recuperacoesJudiciaisFalencias: []
+                pessoaJuridica: null
+                documentoConsultado: 123.456.789-09
         '400':
           $ref: '#/components/responses/Error400'
         '401':
@@ -4157,10 +4177,16 @@ paths:
               example:
                 observacao: null
                 pessoaFisica:
-                  score: number
-                  faixaScore: string
+                  score: 712
+                  faixaScore: Baixo índice de inadimplência
+                  scorePerfil: 85
+                  scorePagamento: 280
+                  descricaoPerfil: O consumidor apresenta o comportamento esperado ou possui pequenas
+                    divergências na utilização de crédito.
+                  descricaoScorePagamento: O consumidor paga até 50% ou a maioria das suas contas em dia
+                    na média dos últimos 12 meses.
                 pessoaJuridica: null
-                documentoConsultado: string
+                documentoConsultado: 123.456.789-09
         '400':
           $ref: '#/components/responses/Error400'
         '401':

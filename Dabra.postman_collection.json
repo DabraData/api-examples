@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Dabra API",
-    "description": "134 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-10-23.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
+    "description": "134 consultas da API Dabra, geradas do catalogo vivo (https://app.dabradata.com/api/v1/docs) em 2026-10-27.\n\nConfigure a variavel API_KEY. Com uma chave de teste (dabra_test_...) cada chamada devolve o exemplo do endpoint a custo zero, com o header X-Example: true. Com a chave de producao (dabra_live_...) a consulta e real e cobrada.\n\nDocumentacao: https://dabradata.com/docs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {
@@ -2047,7 +2047,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Retorna pendências de Pessoa Física ou Jurídica — protestos (cobertura SP), ações judiciais, falências e cheques sem fundo — a partir da base da Quod, para análise de risco e compliance.\n\nPreco: R$ 2,83 por consulta.\nDocumentacao: https://dabradata.com/docs/credito-e-score/detalhamento-negativo",
+            "description": "Retorna as pendências financeiras de uma Pessoa Física ou Jurídica: negativações por credores, protestos (cobertura SP), ações judiciais, recuperações judiciais e falências e cheques sem fundo, para análise de risco e compliance.\n\nPreco: R$ 2,83 por consulta.\nDocumentacao: https://dabradata.com/docs/credito-e-score/detalhamento-negativo",
             "url": {
               "raw": "{{baseUrl}}/api/v1/consulta/detalhamento-negativo?cnpj={{CNPJ}}",
               "host": [
@@ -2086,7 +2086,7 @@
                     "value": "application/json"
                   }
                 ],
-                "description": "Retorna pendências de Pessoa Física ou Jurídica — protestos (cobertura SP), ações judiciais, falências e cheques sem fundo — a partir da base da Quod, para análise de risco e compliance.\n\nPreco: R$ 2,83 por consulta.\nDocumentacao: https://dabradata.com/docs/credito-e-score/detalhamento-negativo",
+                "description": "Retorna as pendências financeiras de uma Pessoa Física ou Jurídica: negativações por credores, protestos (cobertura SP), ações judiciais, recuperações judiciais e falências e cheques sem fundo, para análise de risco e compliance.\n\nPreco: R$ 2,83 por consulta.\nDocumentacao: https://dabradata.com/docs/credito-e-score/detalhamento-negativo",
                 "url": {
                   "raw": "{{baseUrl}}/api/v1/consulta/detalhamento-negativo?cnpj={{CNPJ}}",
                   "host": [
@@ -2127,7 +2127,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"observacao\": null,\n  \"pessoaFisica\": null,\n  \"pessoaJuridica\": {\n    \"pendenciaFinanceira\": {\n      \"status\": \"string\",\n      \"protestos\": [],\n      \"acoesJudiciais\": [],\n      \"totalPendencia\": \"number\",\n      \"chequesSemFundo\": [],\n      \"recuperacoesJudiciaisFalencia\": []\n    }\n  },\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"observacao\": null,\n  \"pessoaFisica\": {\n    \"pendenciaFinanceira\": {\n      \"status\": \"Consta Pendência\",\n      \"protestos\": [],\n      \"negativacoes\": [\n        {\n          \"valor\": 4310.5,\n          \"credor\": \"BANCO EXEMPLO S.A.\",\n          \"motivo\": \"FINANCIAMENTOS\",\n          \"endereco\": {\n            \"uf\": \"SP\",\n            \"cep\": null,\n            \"bairro\": null,\n            \"cidade\": \"SAO PAULO\",\n            \"numero\": null,\n            \"logradouro\": null,\n            \"complemento\": null\n          },\n          \"situacao\": \"ATIVO\",\n          \"dataInclusao\": \"15/03/2026 00:00:00\",\n          \"dataOcorrencia\": \"10/02/2026 00:00:00\",\n          \"numeroContrato\": \"000123456789\",\n          \"dataAtualizacao\": null,\n          \"documentoCredor\": \"00.000.000/0001-00\",\n          \"tipoParticipacao\": \"PRINCIPAL\"\n        }\n      ],\n      \"acoesJudiciais\": [],\n      \"totalPendencia\": 4310.5,\n      \"chequesSemFundo\": [],\n      \"recuperacoesJudiciaisFalencias\": []\n    }\n  },\n  \"pessoaJuridica\": null,\n  \"documentoConsultado\": \"123.456.789-09\"\n}"
             }
           ]
         },
@@ -2303,7 +2303,7 @@
                   "value": "true"
                 }
               ],
-              "body": "{\n  \"observacao\": null,\n  \"pessoaFisica\": {\n    \"score\": \"number\",\n    \"faixaScore\": \"string\"\n  },\n  \"pessoaJuridica\": null,\n  \"documentoConsultado\": \"string\"\n}"
+              "body": "{\n  \"observacao\": null,\n  \"pessoaFisica\": {\n    \"score\": 712,\n    \"faixaScore\": \"Baixo índice de inadimplência\",\n    \"scorePerfil\": 85,\n    \"scorePagamento\": 280,\n    \"descricaoPerfil\": \"O consumidor apresenta o comportamento esperado ou possui pequenas divergências na utilização de crédito.\",\n    \"descricaoScorePagamento\": \"O consumidor paga até 50% ou a maioria das suas contas em dia na média dos últimos 12 meses.\"\n  },\n  \"pessoaJuridica\": null,\n  \"documentoConsultado\": \"123.456.789-09\"\n}"
             }
           ]
         }
